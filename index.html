@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>進路サポートサイト｜校内限定</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:      #F6F3EC;
+    --paper-deep: #EEE8DA;
+    --ink:        #1D2430;
+    --ink-soft:   #565F6E;
+    --line-navy:  #14213D;
+    --gold:       #C79A3C;
+    --teal:       #2C6E6B;
+    --clay:       #B5533F;
+    --stop-r: 11px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans JP", sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:"Zen Old Mincho", serif; letter-spacing:.02em; }
+  a{ color:inherit; text-decoration:none; }
+  img{max-width:100%;display:block;}
+
+  /* ---------- header ---------- */
+  header{
+    background:var(--line-navy);
+    color:var(--paper);
+    padding:18px 20px 22px;
+    position:sticky; top:0; z-index:50;
+    box-shadow:0 2px 14px rgba(20,33,61,.18);
+  }
+  .header-top{
+    display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    max-width:1040px; margin:0 auto;
+  }
+  .brand-eyebrow{
+    font-size:.68rem; letter-spacing:.28em; color:var(--gold); font-weight:700;
+  }
+  .brand-name{ font-size:1.28rem; margin-top:2px; }
+  .badge-inhouse{
+    font-size:.66rem; border:1px solid rgba(246,243,236,.4);
+    padding:3px 9px; border-radius:999px; white-space:nowrap; color:var(--paper);
+    opacity:.85;
+  }
+  nav{
+    max-width:1040px; margin:14px auto 0; display:flex; gap:4px;
+    overflow-x:auto; scrollbar-width:none;
+  }
+  nav::-webkit-scrollbar{display:none;}
+  nav a{
+    font-size:.82rem; padding:7px 12px; border-radius:8px; white-space:nowrap;
+    color:rgba(246,243,236,.82);
+  }
+  nav a:hover{ background:rgba(246,243,236,.1); color:var(--paper); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    max-width:1040px; margin:0 auto; padding:52px 20px 36px;
+  }
+  .hero-eyebrow{
+    color:var(--teal); font-weight:700; font-size:.78rem; letter-spacing:.14em;
+  }
+  .hero h1{
+    font-size:clamp(1.7rem, 4.4vw, 2.5rem);
+    margin:10px 0 14px;
+    color:var(--line-navy);
+  }
+  .hero p{ color:var(--ink-soft); max-width:38em; font-size:.96rem; }
+
+  /* ---------- route (signature element) ---------- */
+  .route-wrap{ max-width:1040px; margin:0 auto; padding:0 20px 80px; position:relative; }
+  .route-line{
+    position:absolute; left:39px; top:14px; bottom:14px; width:2px;
+    background:repeating-linear-gradient(to bottom, var(--line-navy) 0 8px, transparent 8px 14px);
+  }
+  .stop{
+    position:relative; padding:0 0 56px 78px; scroll-margin-top:130px;
+  }
+  .stop:last-child{ padding-bottom:0; }
+  .stop-marker{
+    position:absolute; left:28px; top:2px;
+    width:calc(var(--stop-r) * 2); height:calc(var(--stop-r) * 2);
+    border-radius:50%; background:var(--paper);
+    border:3px solid var(--line-navy);
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Zen Old Mincho", serif; font-size:.72rem; font-weight:700;
+    color:var(--line-navy);
+    z-index:2;
+  }
+  .stop.priority .stop-marker{ background:var(--gold); border-color:var(--gold); color:var(--line-navy); }
+
+  .stop-head{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+  .stop-tag{
+    font-size:.68rem; letter-spacing:.12em; font-weight:700; color:var(--teal);
+  }
+  .stop.priority .stop-tag{ color:var(--gold); }
+  .stop h2{ font-size:1.25rem; color:var(--line-navy); }
+  .stop-desc{ color:var(--ink-soft); font-size:.9rem; margin-bottom:18px; max-width:34em; }
+
+  /* news card */
+  .news-card{
+    background:var(--line-navy); color:var(--paper);
+    border-radius:14px; padding:22px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .news-card .cta-label{ font-size:.7rem; letter-spacing:.1em; color:var(--gold); font-weight:700; margin-bottom:4px;}
+  .news-card .cta-title{ font-size:1.05rem; font-family:"Zen Old Mincho",serif; }
+  .news-card .go{
+    background:var(--gold); color:var(--line-navy); font-weight:700; font-size:.84rem;
+    padding:10px 18px; border-radius:8px; flex-shrink:0;
+  }
+  .news-card .go:hover{ filter:brightness(1.06); }
+
+  /* field grid */
+  .field-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:10px;
+  }
+  .field-card{
+    background:#fff; border:1px solid var(--paper-deep); border-radius:12px;
+    padding:16px 14px; font-size:.86rem; font-weight:500;
+  }
+  .field-card .k{ display:block; font-size:.66rem; color:var(--ink-soft); margin-top:4px; font-weight:400;}
+  .field-card.soon{ opacity:.55; border-style:dashed; }
+
+  /* notice list */
+  .notice-list{ border-top:1px solid var(--paper-deep); }
+  .notice-item{
+    display:flex; gap:14px; padding:13px 0; border-bottom:1px solid var(--paper-deep);
+    font-size:.88rem; align-items:baseline;
+  }
+  .notice-item .d{ color:var(--ink-soft); font-size:.76rem; flex-shrink:0; width:4.6em; }
+  .notice-item .pill{
+    font-size:.64rem; background:var(--clay); color:#fff; padding:2px 7px; border-radius:5px;
+    flex-shrink:0;
+  }
+  .notice-empty{ padding:20px 0; color:var(--ink-soft); font-size:.86rem; font-style:italic; }
+
+  /* link list (footer-weight) */
+  .link-list{ display:flex; flex-wrap:wrap; gap:8px; }
+  .link-list a{
+    font-size:.82rem; background:var(--paper-deep); padding:7px 13px; border-radius:999px;
+    color:var(--ink-soft); display:inline-flex; align-items:center; gap:7px;
+  }
+  .link-list a:hover{ color:var(--ink); }
+  .link-list .lk-tag{
+    font-size:.66rem; background:var(--teal); color:#fff; padding:1px 7px; border-radius:999px; font-weight:700;
+  }
+
+  footer{
+    background:var(--line-navy); color:rgba(246,243,236,.7);
+    padding:26px 20px; text-align:center; font-size:.76rem;
+  }
+  footer strong{ color:var(--paper); }
+
+  @media (max-width:520px){
+    .route-line{ left:31px; }
+    .stop{ padding-left:64px; }
+    .stop-marker{ left:20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand-eyebrow">SCHOOL GUIDANCE LINE</div>
+      <div class="brand-name">進路サポートサイト</div>
+    </div>
+    <div class="badge-inhouse">校内限定</div>
+  </div>
+  <nav>
+    <a href="#news">① ニュース</a>
+    <a href="#docs">② 志望理由書・面接対策</a>
+    <a href="#events">③ 行事予定</a>
+    <a href="#links">④ リンク集</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">進路という路線を、自分のペースで進む</div>
+  <h1>今日、どの駅で降りる？</h1>
+  <p>ニュース・志望理由書対策・行事予定・進路リンクの4駅を用意しました。気になるところから、好きな順番でどうぞ。</p>
+</section>
+
+<div class="route-wrap">
+  <div class="route-line"></div>
+
+  <div class="stop priority" id="news">
+    <div class="stop-marker">1</div>
+    <div class="stop-head">
+      <span class="stop-tag">STOP 1 ・ 最優先</span>
+      <h2>学習・時事ニュース</h2>
+    </div>
+    <p class="stop-desc">分野別に整理された記事リンク集。別サイト（classroom-news-portal）で毎日更新しています。</p>
+    <div class="news-card">
+      <div>
+        <div class="cta-label">TODAY'S ARTICLES</div>
+        <div class="cta-title">今日の記事をチェックする</div>
+      </div>
+      <a class="go" href="#" data-note="classroom-news-portalのURLに差し替え">記事一覧へ →</a>
+    </div>
+  </div>
+
+  <div class="stop" id="docs">
+    <div class="stop-marker">2</div>
+    <div class="stop-head">
+      <span class="stop-tag">STOP 2</span>
+      <h2>志望理由書・面接対策資料</h2>
+    </div>
+    <p class="stop-desc">分野別にテンプレート・書き方のポイント・想定質問をまとめています。準備中の分野は今後追加予定です。</p>
+    <div class="field-grid">
+      <a class="field-card" href="field-nursing.html">看護<span class="k">志望理由書 / 面接</span></a>
+      <a class="field-card" href="field-childcare.html">保育・childcare<span class="k">志望理由書 / 面接</span></a>
+      <a class="field-card" href="field-law.html">法学<span class="k">志望理由書 / 面接</span></a>
+      <a class="field-card" href="field-sports.html">スポーツ科学<span class="k">志望理由書 / 面接</span></a>
+      <a class="field-card" href="field-ot.html">作業療法<span class="k">志望理由書 / 面接</span></a>
+      <div class="field-card soon">その他分野<span class="k">準備中</span></div>
+    </div>
+  </div>
+
+  <div class="stop" id="events">
+    <div class="stop-marker">3</div>
+    <div class="stop-head">
+      <span class="stop-tag">STOP 3</span>
+      <h2>行事予定・お知らせ</h2>
+    </div>
+    <p class="stop-desc">説明会・出願締切・面接練習日などの新着情報です。</p>
+    <div class="notice-list">
+      <!-- 行事を追加する場合は、このブロックをコピーして中身を書き換えてください -->
+      <div class="notice-item">
+        <div class="d">9/20</div>
+        <span class="pill">説明会</span>
+        <div>〇〇大学 オープンキャンパス（希望者）</div>
+      </div>
+      <div class="notice-item">
+        <div class="d">10/15</div>
+        <span class="pill">締切</span>
+        <div>推薦入試 出願書類 校内締切</div>
+      </div>
+      <div class="notice-item">
+        <div class="d">10/28</div>
+        <span class="pill">面接練習</span>
+        <div>面接練習 第1回（放課後・進路指導室）</div>
+      </div>
+      <!-- ここまでがサンプル。実際の日程が決まり次第、書き換えてください -->
+    </div>
+  </div>
+
+  <div class="stop" id="links">
+    <div class="stop-marker">4</div>
+    <div class="stop-head">
+      <span class="stop-tag">STOP 4</span>
+      <h2>進路関連リンク集</h2>
+    </div>
+    <p class="stop-desc">大学・専門学校の公式サイトへのリンクです（分野別に順次追加予定）。</p>
+    <div class="link-list">
+      <!-- リンクを追加する場合は、このタグをコピーして書き換えてください -->
+      <a href="#"><span class="lk-tag">看護</span>〇〇大学 看護学部</a>
+      <a href="#"><span class="lk-tag">保育</span>〇〇短期大学 保育科</a>
+      <a href="#"><span class="lk-tag">共通</span>大学入試情報サイト</a>
+      <a href="#"><span class="lk-tag">共通</span>専門学校ポータル</a>
+      <a href="#"><span class="lk-tag">共通</span>奨学金情報</a>
+      <!-- ここまでがサンプル。分野タグは今後増やしてOK -->
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>進路サポートサイト</strong>（校内限定）<br>
+  最終更新：2026年8月
+</footer>
+
+</body>
+</html>
