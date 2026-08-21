@@ -168,9 +168,39 @@
     .stop{ padding-left:64px; }
     .stop-marker{ left:20px; }
   }
+
+  /* ---- password gate ---- */
+  #gate{
+    position:fixed; inset:0; background:var(--line-navy); z-index:999;
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:14px;
+    padding:20px; text-align:center;
+  }
+  #gate.hide{ display:none; }
+  #gate h2{ color:var(--paper); font-size:1.1rem; }
+  #gate p{ color:rgba(246,243,236,.7); font-size:.82rem; max-width:24em; }
+  #gate input{
+    font-size:1rem; padding:10px 14px; border-radius:8px; border:1px solid rgba(246,243,236,.3);
+    background:rgba(246,243,236,.08); color:var(--paper); width:220px; text-align:center;
+  }
+  #gate input::placeholder{ color:rgba(246,243,236,.4); }
+  #gate button{
+    background:var(--gold); color:var(--line-navy); font-weight:700; font-size:.86rem;
+    padding:10px 22px; border-radius:8px; border:none; cursor:pointer;
+  }
+  #gate .err{ color:#e8a49c; font-size:.8rem; min-height:1.2em; }
+  body.locked > *:not(#gate){ display:none !important; }
 </style>
 </head>
-<body>
+<body class="locked">
+
+<div id="gate">
+  <h2>校内限定ページ</h2>
+  <p>合言葉を入力してください。</p>
+  <input type="password" id="gate-input" placeholder="合言葉">
+  <button onclick="checkGate()">開く</button>
+  <div class="err" id="gate-err"></div>
+</div>
+
 
 <header>
   <div class="header-top">
@@ -203,13 +233,13 @@
       <span class="stop-tag">STOP 1 ・ 最優先</span>
       <h2>学習・時事ニュース</h2>
     </div>
-    <p class="stop-desc">分野別に整理された記事リンク集。別サイトで毎日更新しています。</p>
+    <p class="stop-desc">分野別に整理された記事リンク集。別サイト（classroom-news-portal）で毎日更新しています。</p>
     <div class="news-card">
       <div>
         <div class="cta-label">TODAY'S ARTICLES</div>
         <div class="cta-title">今日の記事をチェックする</div>
       </div>
-      <a class="go" href="https://knsite.github.io/articles/" data-note="classroom-news-portalのURLに差し替え">記事一覧へ →</a>
+      <a class="go" href="#" data-note="classroom-news-portalのURLに差し替え">記事一覧へ →</a>
     </div>
   </div>
 
@@ -283,5 +313,33 @@
   最終更新：2026年8月
 </footer>
 
+
+<script>
+  (function(){
+    var PASS = "hidaka";
+    if(sessionStorage.getItem("shinro-gate") === "ok"){
+      document.body.classList.remove("locked");
+      document.getElementById("gate").classList.add("hide");
+    } else {
+      document.body.classList.add("locked");
+    }
+  })();
+  function checkGate(){
+    var v = document.getElementById("gate-input").value.trim().toLowerCase();
+    if(v === "hidaka"){
+      sessionStorage.setItem("shinro-gate","ok");
+      document.body.classList.remove("locked");
+      document.getElementById("gate").classList.add("hide");
+    } else {
+      document.getElementById("gate-err").textContent = "合言葉が違います。";
+    }
+  }
+  document.addEventListener("DOMContentLoaded", function(){
+    var inp = document.getElementById("gate-input");
+    if(inp){
+      inp.addEventListener("keydown", function(e){ if(e.key === "Enter") checkGate(); });
+    }
+  });
+</script>
 </body>
 </html>
