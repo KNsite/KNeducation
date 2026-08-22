@@ -133,6 +133,13 @@
   .field-card .k{ display:block; font-size:.66rem; color:var(--ink-soft); margin-top:4px; font-weight:400;}
   .field-card.soon{ opacity:.55; border-style:dashed; }
 
+  .genre-block{ margin-bottom:20px; }
+  .genre-block:last-child{ margin-bottom:0; }
+  .genre-title{
+    font-size:.76rem; font-weight:700; color:var(--line-navy); margin-bottom:8px;
+    padding-left:10px; border-left:3px solid var(--gold);
+  }
+
   /* notice list */
   .notice-list{ border-top:1px solid var(--paper-deep); }
   .notice-item{
@@ -233,13 +240,13 @@
       <span class="stop-tag">STOP 1 ・ 最優先</span>
       <h2>学習・時事ニュース</h2>
     </div>
-    <p class="stop-desc">分野別に整理された記事リンク集。別サイトで毎日更新しています。</p>
+    <p class="stop-desc">分野別に整理された記事リンク集。別サイト（classroom-news-portal）で毎日更新しています。</p>
     <div class="news-card">
       <div>
         <div class="cta-label">TODAY'S ARTICLES</div>
         <div class="cta-title">今日の記事をチェックする</div>
       </div>
-      <a class="go" href="https://knsite.github.io/articles/" data-note="classroom-news-portalのURLに差し替え">記事一覧へ →</a>
+      <a class="go" href="#" data-note="classroom-news-portalのURLに差し替え">記事一覧へ →</a>
     </div>
   </div>
 
@@ -249,14 +256,44 @@
       <span class="stop-tag">STOP 2</span>
       <h2>志望理由書・面接対策資料</h2>
     </div>
-    <p class="stop-desc">分野別にテンプレート・書き方のポイント・想定質問をまとめています。準備中の分野は今後追加予定です。</p>
-    <div class="field-grid">
-      <a class="field-card" href="field-nursing.html">看護<span class="k">志望理由書 / 面接</span></a>
-      <a class="field-card" href="field-childcare.html">保育・childcare<span class="k">志望理由書 / 面接</span></a>
-      <a class="field-card" href="field-law.html">法学<span class="k">志望理由書 / 面接</span></a>
-      <a class="field-card" href="field-sports.html">スポーツ科学<span class="k">志望理由書 / 面接</span></a>
-      <a class="field-card" href="field-ot.html">作業療法<span class="k">志望理由書 / 面接</span></a>
-      <div class="field-card soon">その他分野<span class="k">準備中</span></div>
+    <p class="stop-desc">4つのジャンル・15分野に分けて、テンプレート・書き方のポイント・想定質問をまとめています。準備中の分野は今後追加予定です。</p>
+    <div class="genre-block">
+      <div class="genre-title">医療・健康系</div>
+      <div class="field-grid">
+        <a class="field-card" href="field-nursing.html">看護<span class="k">志望理由書 / 面接</span></a>
+        <a class="field-card" href="field-ot.html">作業療法<span class="k">志望理由書 / 面接</span></a>
+        <a class="field-card" href="field-pt.html">理学療法<span class="k">志望理由書 / 面接</span></a>
+        <a class="field-card" href="field-labtech.html">臨床検査<span class="k">志望理由書 / 面接</span></a>
+        <a class="field-card" href="field-nutrition.html">栄養<span class="k">志望理由書 / 面接</span></a>
+      </div>
+    </div>
+
+    <div class="genre-block">
+      <div class="genre-title">教育・保育系</div>
+      <div class="field-grid">
+        <a class="field-card" href="field-education.html">教育<span class="k">志望理由書 / 面接</span></a>
+        <a class="field-card" href="field-childcare.html">保育<span class="k">志望理由書 / 面接</span></a>
+      </div>
+    </div>
+
+    <div class="genre-block">
+      <div class="genre-title">社会・ビジネス系</div>
+      <div class="field-grid">
+        <a class="field-card" href="field-law.html">法学<span class="k">志望理由書 / 面接</span></a>
+        <a class="field-card" href="field-economics.html">経済<span class="k">志望理由書 / 面接</span></a>
+        <a class="field-card" href="field-management.html">経営<span class="k">志望理由書 / 面接</span></a>
+        <a class="field-card" href="field-international.html">国際関係<span class="k">志望理由書 / 面接</span></a>
+        <a class="field-card" href="field-welfare.html">福祉<span class="k">志望理由書 / 面接</span></a>
+      </div>
+    </div>
+
+    <div class="genre-block">
+      <div class="genre-title">実技・専門系</div>
+      <div class="field-grid">
+        <a class="field-card" href="field-sports.html">スポーツ科学<span class="k">志望理由書 / 面接</span></a>
+        <a class="field-card" href="field-beauty.html">美容<span class="k">志望理由書 / 面接</span></a>
+        <a class="field-card" href="field-culinary.html">調理<span class="k">志望理由書 / 面接</span></a>
+      </div>
     </div>
   </div>
 
