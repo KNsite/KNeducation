@@ -87,9 +87,41 @@
   @media (max-width:760px){
     .cards{grid-template-columns:1fr;}
   }
+
+  /* ---- password gate ---- */
+  #gate{
+    position:fixed; inset:0; background:#1D2430; z-index:999;
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:14px;
+    padding:20px; text-align:center;
+  }
+  #gate.hide{ display:none; }
+  #gate h2{ color:#F6F3EC; font-family:'Fraunces',serif; font-size:1.1rem; font-weight:600; }
+  #gate p{ color:rgba(246,243,236,.7); font-size:.82rem; max-width:24em; margin:0; }
+  #gate input{
+    font-size:1rem; padding:10px 14px; border-radius:8px; border:1px solid rgba(246,243,236,.3);
+    background:rgba(246,243,236,.08); color:#F6F3EC; width:220px; text-align:center;
+    font-family:'Inter',sans-serif;
+  }
+  #gate input::placeholder{ color:rgba(246,243,236,.4); }
+  #gate button{
+    background:#C79A3C; color:#1D2430; font-weight:700; font-size:.86rem;
+    padding:10px 22px; border-radius:8px; border:none; cursor:pointer;
+    font-family:'Inter',sans-serif;
+  }
+  #gate .err{ color:#e8a49c; font-size:.8rem; min-height:1.2em; }
+  body.locked > *:not(#gate){ display:none !important; }
 </style>
 </head>
-<body>
+<body class="locked">
+
+<div id="gate">
+  <h2>校内限定ページ</h2>
+  <p>合言葉を入力してください。</p>
+  <input type="password" id="gate-input" placeholder="合言葉">
+  <button onclick="checkGate()">開く</button>
+  <div class="err" id="gate-err"></div>
+</div>
+
 
 <header>
   <div class="wrap">
@@ -135,6 +167,34 @@
     <p>進路指導部</p>
   </div>
 </footer>
+
+<script>
+  (function(){
+    var PASS = "hidaka";
+    if(sessionStorage.getItem("shinro-gate") === "ok"){
+      document.body.classList.remove("locked");
+      document.getElementById("gate").classList.add("hide");
+    } else {
+      document.body.classList.add("locked");
+    }
+  })();
+  function checkGate(){
+    var v = document.getElementById("gate-input").value.trim().toLowerCase();
+    if(v === "hidaka"){
+      sessionStorage.setItem("shinro-gate","ok");
+      document.body.classList.remove("locked");
+      document.getElementById("gate").classList.add("hide");
+    } else {
+      document.getElementById("gate-err").textContent = "合言葉が違います。";
+    }
+  }
+  document.addEventListener("DOMContentLoaded", function(){
+    var inp = document.getElementById("gate-input");
+    if(inp){
+      inp.addEventListener("keydown", function(e){ if(e.key === "Enter") checkGate(); });
+    }
+  });
+</script>
 
 </body>
 </html>
