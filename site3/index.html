@@ -64,6 +64,18 @@
   }
   nav a:hover{ background:rgba(246,243,236,.1); color:var(--paper); }
 
+  .grade-nav{
+    max-width:1040px; margin:10px auto 0; display:flex; gap:6px;
+  }
+  .grade-nav a{
+    font-size:.72rem; padding:5px 11px; border-radius:999px;
+    border:1px solid rgba(246,243,236,.3); color:rgba(246,243,236,.75);
+  }
+  .grade-nav a:hover{ background:rgba(246,243,236,.1); color:var(--paper); }
+  .grade-nav a.active{
+    background:var(--gold); border-color:var(--gold); color:var(--line-navy); font-weight:700;
+  }
+
   /* ---------- hero ---------- */
   .hero{
     max-width:1040px; margin:0 auto; padding:52px 20px 36px;
@@ -222,6 +234,12 @@
     <a href="#docs">② 志望理由書・面接対策</a>
     <a href="#events">③ 行事予定</a>
     <a href="#links">④ リンク集</a>
+  </nav>
+  <nav class="grade-nav">
+    <a href="../index.html">学年選択</a>
+    <a href="../site1/index.html">1年生</a>
+    <a href="../site2/index.html">2年生</a>
+    <a href="#" class="active">3年生</a>
   </nav>
 </header>
 
