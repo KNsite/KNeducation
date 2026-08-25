@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>受験方法を知ろう｜2年生 進路ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFF1EC;
+    --card:#F7F8F3;
+    --ink:#24312B;
+    --ink-soft:#5C6B62;
+    --road:#C97A3D;
+    --road-soft:#E0A873;
+    --marker:#2F6F5E;
+    --line: rgba(36,49,43,0.15);
+    --max: 900px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(180deg, rgba(201,122,61,0.06), transparent 22%),
+      radial-gradient(ellipse at 85% 5%, rgba(47,111,94,0.08), transparent 45%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 26px;}
+  a{color:inherit;}
+
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .back{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--road); letter-spacing:.08em;}
+
+  main{padding:56px 0 90px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--road); text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--road);}
+  h1{
+    font-family:'Spectral',serif; font-weight:700; font-size:clamp(28px,5vw,42px);
+    line-height:1.32; margin:0 0 20px; max-width:17ch;
+  }
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:58ch; margin:0 0 8px;}
+
+  section.block{padding:50px 0; border-bottom:1px solid var(--line);}
+  section.block:last-of-type{border-bottom:none;}
+  .block-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--marker);
+    letter-spacing:.08em; margin-bottom:10px; display:block;
+  }
+  h2{font-family:'Spectral',serif; font-weight:700; font-size:24px; margin:0 0 14px;}
+  .block p.body{font-size:14.5px; color:var(--ink-soft); margin:0 0 16px; max-width:60ch;}
+
+  .genre-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); gap:14px; margin-top:8px;}
+  .genre-card{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:18px 20px;
+  }
+  .genre-card h3{font-family:'Spectral',serif; font-size:16px; font-weight:700; margin:0 0 8px; color:var(--marker);}
+  .genre-card p{font-size:13.5px; color:var(--ink-soft); margin:0;}
+
+  .checkpoint-box{
+    background:linear-gradient(135deg, var(--card), #fdf3e9);
+    border:1.5px solid var(--road); border-radius:10px; padding:20px 22px; margin-top:20px;
+  }
+  .checkpoint-box h3{font-family:'Spectral',serif; font-size:16px; font-weight:700; margin:0 0 8px;}
+  .checkpoint-box p{font-size:14px; color:var(--ink-soft); margin:0;}
+
+  .method-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(210px,1fr)); gap:14px; margin-top:8px;}
+  .method-card{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:18px 20px;
+  }
+  .method-card .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--card);
+    background:var(--marker); padding:3px 10px; border-radius:100px; display:inline-block; margin-bottom:10px;
+  }
+  .method-card h3{font-family:'Spectral',serif; font-size:15.5px; font-weight:700; margin:0 0 8px;}
+  .method-card p{font-size:13.5px; color:var(--ink-soft); margin:0;}
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+  footer .next{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="back" href="index.html">← 2年生トップへ</a>
+    <span class="brand-sub">STOP 03 — 受験方法を知ろう</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">分野が見えてきたら、次は入試のこと</p>
+    <h1>何が必要か、<br>そろそろ知っておこう。</h1>
+    <p class="lede">分野研究を進めるうちに、「その先の入試」も気になってくるはずです。ここでは、科目と受験方法について、大まかな考え方を紹介します。</p>
+
+    <section class="block" id="kamoku">
+      <span class="block-eyebrow">01 — 必要な科目を考える</span>
+      <h2>分野によって、必要な科目は変わる</h2>
+      <p class="body">大学入試で使う科目は、志望する分野・学部・学校によって大きく変わります。まずは大まかな傾向をつかんでおきましょう。</p>
+
+      <div class="genre-grid">
+        <div class="genre-card"><h3>医療・健康系</h3><p>数学・理科（生物・化学など）が中心になることが多い分野です。</p></div>
+        <div class="genre-card"><h3>教育・保育系</h3><p>文系・理系どちらからも進める道があります。志望校で必要科目を確認しましょう。</p></div>
+        <div class="genre-card"><h3>社会・ビジネス系</h3><p>国語・地歴公民・英語など、文系科目が中心になることが多い分野です。</p></div>
+        <div class="genre-card"><h3>実技・専門系</h3><p>学力試験より、実技試験や面接が重視されることも多い分野です。</p></div>
+        <div class="genre-card"><h3>理工系</h3><p>数学・理科（物理・化学など）が中心になることが多い分野です。</p></div>
+      </div>
+
+      <div class="checkpoint-box">
+        <h3>確認しておきたいポイント</h3>
+        <p>志望校が決まってきたら、「共通テストで何科目必要か」「二次試験・個別試験でどの科目が課されるか」を、その学校の入試情報で必ず確認しましょう。同じ分野でも、学校によって必要な科目が違うことがあります。</p>
+      </div>
+    </section>
+
+    <section class="block" id="method">
+      <span class="block-eyebrow">02 — 受験方法を知る（かんたんに）</span>
+      <h2>入試にはいくつかの入り口がある</h2>
+      <p class="body">大学・短大の入試には、主に3つの方式があります。ここでは大まかな違いだけ紹介します。詳しくは3年生になってから、志望校ごとに調べていきます。</p>
+
+      <div class="method-grid">
+        <div class="method-card">
+          <span class="tag">総合型選抜</span>
+          <h3>活動実績・志望理由など</h3>
+          <p>志望理由や活動実績、面接・小論文などを通して、総合的に評価される方式です。</p>
+        </div>
+        <div class="method-card">
+          <span class="tag">学校推薦型選抜（指定校推薦）</span>
+          <h3>学校に割り当てられた枠を使う</h3>
+          <p>大学から高校に割り当てられた推薦枠を使って出願する方式です。校内選考を通れば、合格の可能性が高くなることが多いです。</p>
+        </div>
+        <div class="method-card">
+          <span class="tag">学校推薦型選抜（公募推薦）</span>
+          <h3>条件を満たせば出願できる</h3>
+          <p>学校長の推薦を受け、評定平均などの出願条件を満たせば出願できる方式です。学校によっては校内選考がある場合もあります。</p>
+        </div>
+        <div class="method-card">
+          <span class="tag">一般選抜</span>
+          <h3>学力試験が中心</h3>
+          <p>共通テストや各大学の個別試験など、学力を測る試験で合否が決まる、最も一般的な方式です。</p>
+        </div>
+      </div>
+      <p class="body" style="margin-top:16px;">専門学校は書類選考・面接が中心のことが多く、就職は履歴書・面接が中心になります。進路タイプによって入試の形自体も変わってくる、と覚えておきましょう。</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap header-row" style="border:none; padding:0;">
+    <p>○○高等学校 進路指導部</p>
+    <a class="next" href="open-campus.html">次へ → オープンキャンパスガイド</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>志望校を考える｜2年生 進路ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFF1EC;
+    --card:#F7F8F3;
+    --ink:#24312B;
+    --ink-soft:#5C6B62;
+    --road:#C97A3D;
+    --road-soft:#E0A873;
+    --marker:#2F6F5E;
+    --line: rgba(36,49,43,0.15);
+    --max: 920px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(180deg, rgba(201,122,61,0.06), transparent 22%),
+      radial-gradient(ellipse at 85% 5%, rgba(47,111,94,0.08), transparent 45%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 26px;}
+  a{color:inherit;}
+
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .back{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--road); letter-spacing:.08em;}
+
+  main{padding:56px 0 90px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--road); text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--road);}
+  h1{
+    font-family:'Spectral',serif; font-weight:700; font-size:clamp(28px,5vw,42px);
+    line-height:1.32; margin:0 0 20px; max-width:17ch;
+  }
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:58ch; margin:0 0 8px;}
+  .note{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft);
+    background:var(--card); border:1px dashed var(--line); border-radius:6px;
+    padding:10px 14px; margin-top:16px; max-width:58ch;
+  }
+
+  .guide-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:14px; margin:28px 0 48px;}
+  .guide-card{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:18px 20px;
+  }
+  .guide-card .num{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--road); letter-spacing:.06em; display:block; margin-bottom:8px;
+  }
+  .guide-card h3{font-family:'Spectral',serif; font-size:15.5px; font-weight:700; margin:0 0 8px;}
+  .guide-card p{font-size:13.5px; color:var(--ink-soft); margin:0;}
+
+  section.block{padding:0 0 50px;}
+  .block-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--marker);
+    letter-spacing:.08em; margin-bottom:10px; display:block;
+  }
+  h2{font-family:'Spectral',serif; font-weight:700; font-size:24px; margin:0 0 14px;}
+  .block p.body{font-size:14.5px; color:var(--ink-soft); margin:0 0 16px; max-width:60ch;}
+
+  #records-area{display:flex; flex-direction:column; gap:18px;}
+  .record-card{
+    background:var(--card); border:1.5px solid var(--marker); border-radius:10px; padding:24px 26px; position:relative;
+  }
+  .record-card .rc-row{display:flex; gap:12px; margin-bottom:14px; flex-wrap:wrap;}
+  .record-card .rc-row > div{flex:1; min-width:180px;}
+  .record-card input, .record-card textarea, .record-card select{
+    width:100%; padding:10px 12px; font-family:'Inter',sans-serif; font-size:14px; color:var(--ink);
+    background:#fff; border:1px solid var(--line); border-radius:6px; outline:none; resize:vertical;
+  }
+  .record-card input:focus, .record-card textarea:focus, .record-card select:focus{border-color:var(--marker);}
+  .record-card label{
+    display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);
+    letter-spacing:.04em; margin-bottom:5px;
+  }
+  .record-card .rc-field{margin-bottom:14px;}
+  .record-card .rc-field:last-child{margin-bottom:0;}
+  .remove-btn{
+    position:absolute; top:18px; right:20px; background:none; border:none;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); cursor:pointer;
+    border-bottom:1px dashed var(--ink-soft);
+  }
+  .add-btn{
+    margin-top:18px; background:var(--marker); color:var(--card); border:none;
+    padding:12px 22px; border-radius:6px; font-weight:600; font-size:14px; cursor:pointer;
+    font-family:'Inter',sans-serif;
+  }
+  .add-btn:hover{opacity:.9;}
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+  footer .next{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="back" href="index.html">← 2年生トップへ</a>
+    <span class="brand-sub">STOP 06 — 志望校を考える</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">分野研究を、学校単位に落とし込む</p>
+    <h1>気になる分野から、<br>気になる学校へ。</h1>
+    <p class="lede">分野が見えてきたら、次は「どの学校の、どの学部学科を、どう受けるか」を具体的に考えていきます。</p>
+    <p class="note">※ 下の記録欄はブラウザを閉じると消えます。大事な内容はノートにも書き写しておきましょう。</p>
+
+    <div class="guide-grid">
+      <div class="guide-card"><span class="num">01</span><h3>候補をあげる</h3><p>気になる学校・学部学科を、思いつく限り書き出してみましょう。</p></div>
+      <div class="guide-card"><span class="num">02</span><h3>受験科目を調べる</h3><p>その学校・学部が課す受験科目を、公式サイトや募集要項で確認しましょう。</p></div>
+      <div class="guide-card"><span class="num">03</span><h3>アドミッションポリシーを読む</h3><p>学校・学部が求める人物像を知り、自分と合っているか考えてみましょう。</p></div>
+      <div class="guide-card"><span class="num">04</span><h3>受験方法を選ぶ</h3><p>一般選抜・指定校推薦・公募推薦・総合型選抜のどれで受けるか、方向性を考えます。</p></div>
+    </div>
+
+    <section class="block" id="records">
+      <span class="block-eyebrow">志望校シート</span>
+      <h2>候補を書き出してみよう</h2>
+      <p class="body">「＋志望校を追加」で、候補の数だけカードを増やせます。わかる範囲でいいので埋めてみましょう。</p>
+      <div id="records-area"></div>
+      <button class="add-btn" id="add-record">＋ 志望校を追加</button>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap header-row" style="border:none; padding:0;">
+    <p>○○高等学校 進路指導部</p>
+    <a class="next" href="junbi-list.html">次へ → 3年生への準備リスト</a>
+  </div>
+</footer>
+
+<script>
+  const recordsArea = document.getElementById('records-area');
+  const addBtn = document.getElementById('add-record');
+
+  function addRecord(){
+    const card = document.createElement('div');
+    card.className = 'record-card';
+    card.innerHTML = `
+      <button class="remove-btn" type="button">削除</button>
+      <div class="rc-row">
+        <div>
+          <label>学校名</label>
+          <input type="text" placeholder="例：○○大学">
+        </div>
+        <div>
+          <label>学部・学科</label>
+          <input type="text" placeholder="例：○○学部○○学科">
+        </div>
+      </div>
+      <div class="rc-field">
+        <label>受験科目（わかる範囲で）</label>
+        <input type="text" placeholder="例：共通テスト3科目＋面接">
+      </div>
+      <div class="rc-field">
+        <label>アドミッションポリシー・求める人物像（メモ）</label>
+        <textarea rows="2" placeholder="調べてわかったことをメモ"></textarea>
+      </div>
+      <div class="rc-row">
+        <div>
+          <label>受けたい受験方法</label>
+          <select>
+            <option value="">— 選択 —</option>
+            <option>総合型選抜</option>
+            <option>指定校推薦</option>
+            <option>公募推薦</option>
+            <option>一般選抜</option>
+            <option>未定</option>
+          </select>
+        </div>
+      </div>
+      <div class="rc-field">
+        <label>自分に合っていると思う理由</label>
+        <textarea rows="2" placeholder="自由に記入"></textarea>
+      </div>
+    `;
+    card.querySelector('.remove-btn').addEventListener('click', () => card.remove());
+    recordsArea.appendChild(card);
+  }
+
+  addBtn.addEventListener('click', addRecord);
+  addRecord();
+</script>
+
+</body>
+</html>

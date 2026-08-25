@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自己理解ワーク｜1年生 進路ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE6D3;
+    --paper-card:#F7F0DC;
+    --ink:#2B3A42;
+    --ink-soft:#5B6B70;
+    --route:#3D6B57;
+    --route-soft:#6E9484;
+    --compass:#B8863B;
+    --line: rgba(43,58,66,0.16);
+    --max: 720px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(184,134,59,0.10), transparent 45%),
+      radial-gradient(ellipse at 85% 20%, rgba(61,107,87,0.08), transparent 50%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+  a{color:inherit;}
+
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .back{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--compass); letter-spacing:.08em;}
+
+  main{padding:56px 0 90px;}
+
+  /* progress */
+  .progress-shell{margin-bottom:40px;}
+  .progress-label{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--compass);
+    letter-spacing:.1em; margin-bottom:10px; display:flex; justify-content:space-between;
+  }
+  .progress-track{height:4px; background:var(--line); border-radius:4px; overflow:hidden;}
+  .progress-fill{height:100%; background:var(--route); border-radius:4px; transition:width .35s ease; width:0%;}
+
+  /* question */
+  .q-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.1em;
+    color:var(--route); text-transform:uppercase; margin-bottom:14px;
+  }
+  h1.q-title{
+    font-family:'Fraunces',serif; font-weight:600; font-size:clamp(22px,4vw,30px);
+    line-height:1.45; margin:0 0 30px;
+  }
+  .options{display:flex; flex-direction:column; gap:12px;}
+  .opt{
+    display:block; width:100%; text-align:left;
+    background:var(--paper-card); border:1px solid var(--line); border-radius:8px;
+    padding:16px 20px; font-family:'Inter',sans-serif; font-size:15px; color:var(--ink);
+    cursor:pointer; transition:border-color .15s ease, transform .15s ease, background .15s ease;
+  }
+  .opt:hover{border-color:var(--route); transform:translateX(3px); background:#fbf6e6;}
+  .opt:focus-visible{outline:2px solid var(--route); outline-offset:2px;}
+
+  .q-nav{margin-top:24px; display:flex; justify-content:space-between; align-items:center;}
+  .link-btn{
+    background:none; border:none; font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    color:var(--ink-soft); cursor:pointer; padding:6px 0; border-bottom:1px dashed var(--ink-soft);
+  }
+  .link-btn:disabled{opacity:0; cursor:default;}
+
+  /* result */
+  #result-area{display:none;}
+  .result-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--compass); text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px;
+  }
+  .result-eyebrow::before{content:"";width:26px;height:1px;background:var(--compass);}
+  h2.result-title{
+    font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,5vw,38px);
+    line-height:1.32; margin:0 0 20px;
+  }
+  h2.result-title em{font-style:italic; color:var(--route); font-weight:500;}
+  .result-lede{color:var(--ink-soft); font-size:15.5px; margin:0 0 30px; max-width:52ch;}
+
+  .genre-card{
+    background:var(--paper-card); border:1.5px solid var(--route); border-radius:10px;
+    padding:26px 28px; margin-bottom:16px;
+    background:linear-gradient(135deg, var(--paper-card), #fbf6e6);
+  }
+  .genre-card .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--route);
+    background:rgba(61,107,87,0.12); display:inline-block; padding:3px 10px; border-radius:100px;
+    margin-bottom:10px; letter-spacing:.05em;
+  }
+  .genre-card h3{font-family:'Fraunces',serif; font-size:22px; font-weight:600; margin:0 0 10px;}
+  .genre-card p{color:var(--ink-soft); font-size:14.5px; margin:0 0 14px;}
+  .genre-card .fields{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft); margin-bottom:16px;}
+  .genre-card a.go{
+    font-weight:600; font-size:14px; color:var(--route); text-decoration:none;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+
+  .result-actions{margin-top:28px; display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--route); color:var(--paper-card); text-decoration:none;
+    padding:14px 24px; border-radius:6px; font-weight:600; font-size:15px;
+    box-shadow:0 6px 18px rgba(61,107,87,0.25);
+  }
+  .retry{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); background:none; border-top:none; border-left:none; border-right:none;
+    cursor:pointer; padding:0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="back" href="index.html">← 1年生トップへ</a>
+    <span class="brand-sub">ROUTE 02 — 自己理解ワーク</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div id="quiz-area">
+      <div class="progress-shell">
+        <div class="progress-label">
+          <span id="progress-text">Q1 / 7</span>
+          <span>SELF-CHECK</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
+
+      <p class="q-eyebrow" id="q-eyebrow">質問</p>
+      <h1 class="q-title" id="q-title"></h1>
+      <div class="options" id="q-options"></div>
+
+      <div class="q-nav">
+        <button class="link-btn" id="back-btn">← 前の質問に戻る</button>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="result-area">
+      <p class="result-eyebrow">診断結果</p>
+      <h2 class="result-title" id="result-title"></h2>
+      <p class="result-lede">結果はあくまで今のあなたの傾向です。他のジャンルが気になったら、そちらを見に行ってももちろん大丈夫。</p>
+
+      <div id="genre-cards"></div>
+
+      <div class="result-actions">
+        <a class="cta" href="bunya.html" id="bunya-link">分野を知るページへ進む →</a>
+        <button class="retry" id="retry-btn">もう一度診断する</button>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  const questions = [
+    {
+      eyebrow: "Q1 / 7",
+      title: "好きな教科・得意な教科は？",
+      options: [
+        { text: "理科・数学", genre: "riko", weight: 1 },
+        { text: "国語・英語", genre: "shakai", weight: 1 },
+        { text: "地理・歴史・公民", genre: "shakai", weight: 1 },
+        { text: "家庭科・美術・保健体育", genre: "jitsugi", weight: 1 },
+        { text: "特にない／わからない", genre: null, weight: 0 }
+      ]
+    },
+    {
+      eyebrow: "Q2 / 7",
+      title: "休み時間・放課後によくしていることは？",
+      options: [
+        { text: "誰かと話したり、相談に乗ったりする", genre: "iryo", weight: 1 },
+        { text: "何かを作る・組み立てる・絵を描く", genre: "jitsugi", weight: 1 },
+        { text: "調べ物をする・本を読む", genre: "riko", weight: 1 },
+        { text: "SNSやニュースをチェックする", genre: "shakai", weight: 1 }
+      ]
+    },
+    {
+      eyebrow: "Q3 / 7",
+      title: "得意だと思うことは？",
+      options: [
+        { text: "人の気持ちを考えるのが得意", genre: "iryo", weight: 1 },
+        { text: "コツコツ丁寧な作業が得意", genre: "jitsugi", weight: 1 },
+        { text: "論理的に筋道を立てて考えるのが得意", genre: "riko", weight: 1 },
+        { text: "人前で話す・場を盛り上げるのが得意", genre: "shakai", weight: 1 }
+      ]
+    },
+    {
+      eyebrow: "Q4 / 7",
+      title: "気になるニュースのジャンルは？",
+      options: [
+        { text: "医療・健康・福祉", genre: "iryo", weight: 1 },
+        { text: "教育・子育て", genre: "kyoiku", weight: 1 },
+        { text: "経済・国際情勢", genre: "shakai", weight: 1 },
+        { text: "スポーツ・美容・グルメ", genre: "jitsugi", weight: 1 },
+        { text: "科学技術・環境", genre: "riko", weight: 1 }
+      ]
+    },
+    {
+      eyebrow: "Q5 / 7",
+      title: "将来、どんな場所で働くイメージがある？",
+      options: [
+        { text: "病院・施設など、人を支える現場", genre: "iryo", weight: 1 },
+        { text: "学校や保育園など、子どもと関わる現場", genre: "kyoiku", weight: 1 },
+        { text: "オフィスで企画・分析・交渉をする", genre: "shakai", weight: 1 },
+        { text: "現場で技術や体を使って動く", genre: "jitsugi", weight: 1 },
+        { text: "研究室や工場で開発・実験をする", genre: "riko", weight: 1 }
+      ]
+    },
+    {
+      eyebrow: "Q6 / 7",
+      title: "大切にしたい価値観は？",
+      options: [
+        { text: "人の役に立ちたい", genre: "iryo", weight: 1 },
+        { text: "誰かの成長を支えたい", genre: "kyoiku", weight: 1 },
+        { text: "社会や仕組みを動かしたい", genre: "shakai", weight: 1 },
+        { text: "技を磨いて表現したい", genre: "jitsugi", weight: 1 },
+        { text: "新しいものを作り出したい", genre: "riko", weight: 1 }
+      ]
+    },
+    {
+      eyebrow: "Q7 / 7",
+      title: "数学・理科は好き？得意？",
+      options: [
+        { text: "どちらも好き・得意", genre: "riko", weight: 2 },
+        { text: "どちらかは好き", genre: "riko", weight: 1 },
+        { text: "あまり得意じゃない", genre: null, weight: 0 }
+      ]
+    }
+  ];
+
+  const genreInfo = {
+    iryo: {
+      name: "医療・健康系",
+      desc: "人のケアや健康を支える現場に関心が近いタイプです。",
+      fields: "看護・作業療法・理学療法・臨床検査・栄養・医学・薬学・獣医学 など"
+    },
+    kyoiku: {
+      name: "教育・保育系",
+      desc: "誰かの成長や学びを支えることに関心が近いタイプです。",
+      fields: "教育・保育 など"
+    },
+    shakai: {
+      name: "社会・ビジネス系",
+      desc: "社会の仕組みや人と人との関わりを動かすことに関心が近いタイプです。",
+      fields: "経済・経営・国際関係・法学・外国語系・文学系 など"
+    },
+    jitsugi: {
+      name: "実技・専門系",
+      desc: "手や体を使って形にする、技を磨くことに関心が近いタイプです。",
+      fields: "スポーツ科学・美容・福祉・調理 など"
+    },
+    riko: {
+      name: "理工系",
+      desc: "しくみを調べたり、論理的に組み立てたりすることに関心が近いタイプです。",
+      fields: "工学（機械・電気電子）・情報工学／IT・建築／土木・理学・農学／生命科学 など"
+    }
+  };
+
+  const answers = [];
+  let current = 0;
+
+  const qArea = document.getElementById("quiz-area");
+  const resultArea = document.getElementById("result-area");
+  const qEyebrow = document.getElementById("q-eyebrow");
+  const qTitle = document.getElementById("q-title");
+  const qOptions = document.getElementById("q-options");
+  const progressFill = document.getElementById("progress-fill");
+  const progressText = document.getElementById("progress-text");
+  const backBtn = document.getElementById("back-btn");
+
+  function renderQuestion(){
+    const q = questions[current];
+    qEyebrow.textContent = "質問";
+    qTitle.textContent = q.title;
+    progressText.textContent = q.eyebrow;
+    progressFill.style.width = ((current) / questions.length * 100) + "%";
+    backBtn.disabled = current === 0;
+
+    qOptions.innerHTML = "";
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement("button");
+      btn.className = "opt";
+      btn.textContent = opt.text;
+      btn.addEventListener("click", () => selectOption(opt));
+      qOptions.appendChild(btn);
+    });
+  }
+
+  function selectOption(opt){
+    answers[current] = opt;
+    if (current < questions.length - 1){
+      current++;
+      renderQuestion();
+    } else {
+      progressFill.style.width = "100%";
+      showResult();
+    }
+  }
+
+  backBtn.addEventListener("click", () => {
+    if (current > 0){
+      current--;
+      renderQuestion();
+    }
+  });
+
+  function showResult(){
+    const scores = { iryo:0, kyoiku:0, shakai:0, jitsugi:0, riko:0 };
+    answers.forEach(a => {
+      if (a && a.genre) scores[a.genre] += a.weight;
+    });
+    const sorted = Object.entries(scores).sort((a,b) => b[1] - a[1]);
+    const topScore = sorted[0][1];
+    let top = sorted.filter(([g,s]) => s === topScore && s > 0).map(([g]) => g);
+    if (top.length === 0) top = ["riko","shakai","iryo","kyoiku","jitsugi"]; // 全部0点なら暫定で理工系寄りを提示せず全体を促す
+    if (top.length > 2) top = top.slice(0,2);
+
+    qArea.style.display = "none";
+    resultArea.style.display = "block";
+
+    const titleEl = document.getElementById("result-title");
+    const namesText = top.map(g => genreInfo[g].name).join(" と ");
+    titleEl.innerHTML = "あなたに近いのは、<br><em>" + namesText + "</em> かもしれません。";
+
+    const cardsEl = document.getElementById("genre-cards");
+    cardsEl.innerHTML = "";
+    top.forEach(g => {
+      const info = genreInfo[g];
+      const card = document.createElement("div");
+      card.className = "genre-card";
+      card.innerHTML =
+        '<span class="tag">' + info.name + '</span>' +
+        '<h3>' + info.name + '</h3>' +
+        '<p>' + info.desc + '</p>' +
+        '<p class="fields">例：' + info.fields + '</p>';
+      cardsEl.appendChild(card);
+    });
+
+    const bunyaLink = document.getElementById("bunya-link");
+    bunyaLink.href = "bunya.html?genre=" + top.join(",");
+  }
+
+  document.getElementById("retry-btn").addEventListener("click", () => {
+    answers.length = 0;
+    current = 0;
+    resultArea.style.display = "none";
+    qArea.style.display = "block";
+    renderQuestion();
+  });
+
+  renderQuestion();
+</script>
+
+</body>
+</html>

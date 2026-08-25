@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3年生への準備リスト｜2年生 進路ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFF1EC;
+    --card:#F7F8F3;
+    --ink:#24312B;
+    --ink-soft:#5C6B62;
+    --road:#C97A3D;
+    --road-soft:#E0A873;
+    --marker:#2F6F5E;
+    --line: rgba(36,49,43,0.15);
+    --max: 820px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(180deg, rgba(201,122,61,0.08), transparent 25%),
+      radial-gradient(ellipse at 80% 10%, rgba(47,111,94,0.1), transparent 50%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 26px;}
+  a{color:inherit;}
+
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .back{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--road); letter-spacing:.08em;}
+
+  main{padding:60px 0 90px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--road); text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--road);}
+  h1{
+    font-family:'Spectral',serif; font-weight:700; font-size:clamp(28px,5vw,42px);
+    line-height:1.35; margin:0 0 20px; max-width:16ch;
+  }
+  h1 em{font-style:italic; color:var(--road); font-weight:500;}
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:56ch; margin:0 0 50px;}
+
+  section.block{margin-bottom:50px;}
+  .block-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--marker);
+    letter-spacing:.08em; margin-bottom:10px; display:block;
+  }
+  h2{font-family:'Spectral',serif; font-weight:700; font-size:24px; margin:0 0 14px;}
+  .block p.body{font-size:14.5px; color:var(--ink-soft); margin:0 0 16px; max-width:58ch;}
+
+  .checklist{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .checklist li{
+    background:var(--card); border:1px solid var(--line); border-radius:8px;
+    padding:14px 16px; transition:border-color .15s ease;
+  }
+  .checklist li:hover{border-color:var(--road-soft);}
+  .checklist li.checked{border-color:var(--marker); background:linear-gradient(135deg, var(--card), #eef4ef);}
+  .checklist label{display:flex; gap:12px; align-items:flex-start; cursor:pointer;}
+  .checklist input{margin-top:3px; accent-color:var(--marker); width:16px; height:16px; flex-shrink:0;}
+  .checklist span{font-size:14.5px;}
+
+  .divider{height:1px; background:var(--line); margin:56px 0;}
+
+  .pillars{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:20px 0 26px;}
+  .pillar{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px 18px;
+  }
+  .pillar h3{font-family:'Spectral',serif; font-size:15px; font-weight:700; margin:0 0 6px;}
+  .pillar p{font-size:13px; color:var(--ink-soft); margin:0;}
+  @media (max-width:520px){ .pillars{grid-template-columns:1fr;} }
+
+  .bridge{
+    background:linear-gradient(135deg, var(--card), #fdf3e9);
+    border:1.5px solid var(--road); border-radius:12px;
+    padding:32px 30px;
+  }
+  .bridge p{font-size:14.5px; color:var(--ink-soft); margin:0 0 22px; max-width:52ch;}
+  .cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--road); color:var(--card); text-decoration:none;
+    padding:14px 24px; border-radius:6px; font-weight:600; font-size:15px;
+    box-shadow:0 6px 18px rgba(201,122,61,0.28);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .cta:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(201,122,61,0.34);}
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="back" href="index.html">← 2年生トップへ</a>
+    <span class="brand-sub">STOP 07 — 3年生への準備リスト</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">2年生の道のりも、あとひとつ</p>
+    <h1>ここまで来たら、<br><em>あと少し。</em></h1>
+    <p class="lede">分野を絞り、学校を調べ、受験方法まで考えてきました。3年生に上がる前に、今の状態を一度チェックしておきましょう。</p>
+
+    <section class="block" id="checklist">
+      <span class="block-eyebrow">01 — 2年生のうちにやっておきたいこと</span>
+      <h2>今の自分をチェックする</h2>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>気になる分野を2〜3個に絞れている</span></label></li>
+        <li><label><input type="checkbox"><span>オープンキャンパスに、少なくとも1校は行った</span></label></li>
+        <li><label><input type="checkbox"><span>志望校の候補が、いくつか具体的に出てきている</span></label></li>
+        <li><label><input type="checkbox"><span>志望校の受験科目を、ある程度調べている</span></label></li>
+        <li><label><input type="checkbox"><span>どの受験方法（一般・推薦・総合型）で受けたいか、方向性がある</span></label></li>
+      </ul>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="block" id="bridge-info">
+      <span class="block-eyebrow">02 — 3年生になったら見るサイト</span>
+      <h2>3年生サイトでできること</h2>
+      <p class="body">3年生サイトでは、いよいよ出願に向けた具体的な準備が始まります。</p>
+      <div class="pillars">
+        <div class="pillar"><h3>学習・時事ニュース記事</h3><p>小論文・面接で使える時事知識をチェックできます。</p></div>
+        <div class="pillar"><h3>志望理由書・面接対策</h3><p>分野ごとのテンプレートや文型を使って、書類を仕上げていきます。</p></div>
+        <div class="pillar"><h3>行事予定・お知らせ</h3><p>出願や試験に関わるスケジュールを確認できます。</p></div>
+        <div class="pillar"><h3>進路関連リンク集</h3><p>大学・専門学校の公式サイトなどにすぐアクセスできます。</p></div>
+      </div>
+    </section>
+
+    <div class="bridge">
+      <p class="eyebrow" style="margin-bottom:12px;">3年生へ</p>
+      <p>ここまで積み重ねてきたことが、3年生でそのまま活きてきます。準備ができたら、3年生サイトをのぞいてみましょう。</p>
+      <a class="cta" href="../KNeducation/index.html">3年生サイトへ進む →</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>○○高等学校 進路指導部</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.checklist li').forEach(li => {
+    const input = li.querySelector('input');
+    input.addEventListener('change', () => {
+      li.classList.toggle('checked', input.checked);
+    });
+  });
+</script>
+
+</body>
+</html>

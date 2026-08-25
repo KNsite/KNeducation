@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1年生 進路ナビ｜地図を広げよう</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE6D3;
+    --paper-deep:#E3D9BE;
+    --paper-card:#F7F0DC;
+    --ink:#2B3A42;
+    --ink-soft:#5B6B70;
+    --route:#3D6B57;
+    --route-soft:#6E9484;
+    --compass:#B8863B;
+    --line: rgba(43,58,66,0.16);
+    --max: 1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(184,134,59,0.10), transparent 45%),
+      radial-gradient(ellipse at 85% 20%, rgba(61,107,87,0.08), transparent 50%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  a{color:inherit;}
+
+  /* ---- header ---- */
+  header{
+    padding:22px 0 18px;
+    border-bottom:1px solid var(--line);
+  }
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;}
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-mark{
+    width:34px;height:34px;border-radius:50%;
+    border:1.5px solid var(--route);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--route);
+    position:relative;
+  }
+  .brand-mark::before{
+    content:"";position:absolute;width:1px;height:20px;background:var(--route);opacity:.5;
+  }
+  .brand-mark::after{
+    content:"";position:absolute;height:1px;width:20px;background:var(--route);opacity:.5;
+  }
+  .brand-text{font-family:'Fraunces',serif; font-size:17px; font-weight:600; letter-spacing:.01em;}
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-soft); letter-spacing:.08em;}
+
+  nav.grades{display:flex; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:12px;}
+  nav.grades a{
+    padding:6px 12px; border-radius:100px; border:1px solid var(--line);
+    text-decoration:none; color:var(--ink-soft); letter-spacing:.03em;
+  }
+  nav.grades a.active{
+    background:var(--route); border-color:var(--route); color:var(--paper-card); font-weight:500;
+  }
+
+  /* ---- hero ---- */
+  .hero{padding:76px 0 64px; position:relative;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--compass); text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--compass);}
+  h1{
+    font-family:'Fraunces',serif; font-weight:600; font-size:clamp(34px,5.4vw,56px);
+    line-height:1.28; margin:0 0 22px; max-width:15ch;
+  }
+  h1 em{font-style:italic; font-weight:500; color:var(--route);}
+  .lede{font-size:16.5px; color:var(--ink-soft); max-width:46ch; margin:0 0 34px;}
+  .cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--route); color:var(--paper-card); text-decoration:none;
+    padding:14px 24px; border-radius:6px; font-weight:600; font-size:15px;
+    box-shadow:0 6px 18px rgba(61,107,87,0.25);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .cta:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(61,107,87,0.32);}
+  .cta .arrow{font-family:'IBM Plex Mono',monospace;}
+
+  /* ---- route section ---- */
+  .route-section{padding:20px 0 88px; position:relative;}
+  .route-head{margin-bottom:44px;}
+  .route-head .eyebrow{color:var(--route);}
+  .route-head .eyebrow::before{background:var(--route);}
+  h2{font-family:'Fraunces',serif; font-weight:600; font-size:26px; margin:0 0 10px;}
+  .route-head p{color:var(--ink-soft); font-size:15px; max-width:52ch; margin:0;}
+
+  .route{position:relative;}
+  .route-line{
+    position:absolute; left:27px; top:14px; bottom:14px; width:1px;
+    background-image:linear-gradient(var(--route) 55%, transparent 0%);
+    background-size:1px 10px; background-repeat:repeat-y;
+    opacity:.55;
+  }
+  .stop{
+    display:grid; grid-template-columns:56px 1fr; gap:22px;
+    position:relative; padding-bottom:34px;
+  }
+  .stop:last-child{padding-bottom:0;}
+  .pin{
+    width:56px;height:56px;border-radius:50%;
+    background:var(--paper-card); border:1.5px solid var(--route);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--route);
+    z-index:1;
+  }
+  .stop.start .pin{
+    background:var(--route); color:var(--paper-card); border-color:var(--route);
+    box-shadow:0 0 0 6px rgba(61,107,87,0.14);
+  }
+  .card{
+    background:var(--paper-card); border:1px solid var(--line); border-radius:10px;
+    padding:22px 24px; transition:border-color .15s ease, transform .15s ease;
+  }
+  .stop.start .card{
+    border-color:var(--route); background:linear-gradient(135deg, var(--paper-card), #fbf6e6);
+  }
+  .card:hover{transform:translateX(3px); border-color:var(--route-soft);}
+  .card-top{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  .card-label{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--compass); letter-spacing:.08em;
+  }
+  .card h3{font-family:'Fraunces',serif; font-size:20px; font-weight:600; margin:4px 0 8px;}
+  .card p{color:var(--ink-soft); font-size:14.5px; margin:0 0 14px; max-width:56ch;}
+  .card .go{
+    font-size:13.5px; font-weight:600; color:var(--route); text-decoration:none;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .badge{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; background:var(--route);
+    color:var(--paper-card); padding:3px 9px; border-radius:100px; letter-spacing:.05em;
+  }
+
+  /* ---- footer ---- */
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+  footer .next{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+
+  @media (max-width:600px){
+    .stop{grid-template-columns:44px 1fr; gap:14px;}
+    .pin{width:44px;height:44px; font-size:10px;}
+    .route-line{left:21px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <div class="brand">
+      <div class="brand-mark">N</div>
+      <div>
+        <div class="brand-text">進路ナビ</div>
+        <div class="brand-sub">1st YEAR EDITION</div>
+      </div>
+    </div>
+    <nav class="grades">
+      <a href="../index.html">学年選択</a>
+      <a href="#" class="active">1年生</a>
+      <a href="../site2/index.html">2年生</a>
+      <a href="../site3/index.html">3年生</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">高校1年生のための進路ナビ</p>
+    <h1>まだ、白い地図で<br><em>いい。</em></h1>
+    <p class="lede">
+      進路はまだ決まっていなくて大丈夫。今のあなたの興味や得意を書き出すところから、地図は少しずつ埋まっていきます。まずは自分を知ることから始めましょう。
+    </p>
+    <a class="cta" href="jibun-rikai.html">自己理解ワークを始める <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<section class="route-section">
+  <div class="wrap">
+    <div class="route-head">
+      <p class="eyebrow">この1年で辿るルート</p>
+      <h2>6つの地点を、順番に歩いていく</h2>
+      <p>いきなり全部決める必要はありません。まずは①から。歩きながら見えてくるものがあります。</p>
+    </div>
+
+    <div class="route">
+      <div class="route-line"></div>
+
+      <div class="stop">
+        <div class="pin">01</div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">ROUTE 01 — はじめに</span>
+          </div>
+          <h3>高校生活の過ごし方</h3>
+          <p>評定・部活動・資格など、1年生の今から効いてくることを紹介します。今のうちにやっておきたいことのチェックリストつき。</p>
+          <a class="go" href="seikatsu.html">チェックリストを見る →</a>
+        </div>
+      </div>
+
+      <div class="stop start">
+        <div class="pin">02</div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">ROUTE 02 — この1年で一番大事</span>
+            <span class="badge">最重要</span>
+          </div>
+          <h3>自己理解ワーク</h3>
+          <p>好きなこと・得意なこと・大切にしたい価値観を、選択式の質問で整理します。答え終えると、あなたに近いかもしれない分野が見えてきます。</p>
+          <a class="go" href="jibun-rikai.html">診断をはじめる →</a>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="pin">03</div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">ROUTE 03</span>
+          </div>
+          <h3>分野を知る</h3>
+          <p>医療・教育・社会・実技・理工の5つのジャンル、23の分野を紹介します。診断結果と近いジャンルは、ここで強調して表示されます。</p>
+          <a class="go" href="bunya.html">分野一覧を見る →</a>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="pin">04</div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">ROUTE 04</span>
+          </div>
+          <h3>長期休暇の使い方</h3>
+          <p>夏休み・冬休みは、自己理解ワークの振り返りや、気になる分野について自分で調べてみる時間にあてましょう。今のうちにできることをリストで紹介します。</p>
+          <a class="go" href="kyuka.html">過ごし方を見る →</a>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="pin">05</div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">ROUTE 05 — 10月ごろ</span>
+          </div>
+          <h3>文理選択</h3>
+          <p>2年生からの科目選択に向けて、文系・理系それぞれの特徴と、選ぶときに見ておきたいチェックリストをまとめています。</p>
+          <a class="go" href="bunri.html">選び方を見る →</a>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="pin">06</div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">ROUTE 06 — 2年生に向けて</span>
+          </div>
+          <h3>次の一歩へ</h3>
+          <p>文理選択という一つの決断を経て、改めて自分の興味や得意を見つめ直します。大学・短大・専門学校など、学ぶ場所の種類（校種）についても少しずつ考え始めましょう。</p>
+          <a class="go" href="tsugi-no-ippo.html">次の一歩を見る →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap header-row" style="border:none; padding:0;">
+    <p>○○高等学校 進路指導部</p>
+    <a class="next" href="../site2/index.html">2年生になったら → 2年生サイトへ</a>
+  </div>
+</footer>
+
+</body>
+</html>

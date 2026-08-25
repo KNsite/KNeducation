@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>長期休暇の使い方｜1年生 進路ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE6D3;
+    --paper-card:#F7F0DC;
+    --ink:#2B3A42;
+    --ink-soft:#5B6B70;
+    --route:#3D6B57;
+    --route-soft:#6E9484;
+    --compass:#B8863B;
+    --line: rgba(43,58,66,0.16);
+    --max: 860px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(184,134,59,0.10), transparent 45%),
+      radial-gradient(ellipse at 85% 10%, rgba(61,107,87,0.08), transparent 50%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 26px;}
+  a{color:inherit;}
+
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .back{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--compass); letter-spacing:.08em;}
+
+  main{padding:56px 0 90px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--compass); text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--compass);}
+  h1{
+    font-family:'Fraunces',serif; font-weight:600; font-size:clamp(28px,5vw,42px);
+    line-height:1.32; margin:0 0 20px; max-width:16ch;
+  }
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:56ch; margin:0 0 32px;}
+
+  .tabs{display:flex; gap:8px; margin-bottom:8px; border-bottom:1px solid var(--line);}
+  .tab{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.03em;
+    background:none; border:none; padding:12px 4px; margin-right:20px;
+    color:var(--ink-soft); cursor:pointer; position:relative; top:1px;
+  }
+  .tab.active{color:var(--route); font-weight:600; border-bottom:2px solid var(--route);}
+
+  .season{padding:40px 0 20px;}
+  h2{font-family:'Fraunces',serif; font-weight:600; font-size:24px; margin:10px 0 8px;}
+  .season p.body{font-size:14.5px; color:var(--ink-soft); margin:0 0 20px; max-width:58ch;}
+
+  .checklist{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .checklist li{
+    background:var(--paper-card); border:1px solid var(--line); border-radius:8px;
+    padding:14px 16px; transition:border-color .15s ease;
+  }
+  .checklist li:hover{border-color:var(--route-soft);}
+  .checklist li.checked{border-color:var(--route); background:linear-gradient(135deg, var(--paper-card), #fbf6e6);}
+  .checklist label{display:flex; gap:12px; align-items:flex-start; cursor:pointer;}
+  .checklist input{margin-top:3px; accent-color:var(--route); width:16px; height:16px; flex-shrink:0;}
+  .checklist span{font-size:14.5px;}
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+  footer .next{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="back" href="index.html">← 1年生トップへ</a>
+    <span class="brand-sub">ROUTE 04 — 長期休暇の使い方</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">まとまった時間だからこそ</p>
+    <h1>休みの時間を、<br>自分に使ってみよう。</h1>
+    <p class="lede">2年生のようにオープンキャンパスに何校も行く段階ではまだありません。1年生の長期休暇は、自己理解を振り返ったり、気になる分野を自分のペースで調べたりする時間にあてましょう。</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" id="tab-summer" role="tab" aria-selected="true">夏休み</button>
+      <button class="tab" id="tab-winter" role="tab" aria-selected="false">冬休み</button>
+    </div>
+
+    <section class="season" id="summer">
+      <h2>夏休みにやること</h2>
+      <p class="body">1学期の自己理解ワークの結果を、もう一度見返すところから始めましょう。</p>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>自己理解ワークの結果をもう一度見返す（診断は何度でもやり直せます）</span></label></li>
+        <li><label><input type="checkbox"><span>気になる分野を1つ選んで、関連する本や記事を読んでみる</span></label></li>
+        <li><label><input type="checkbox"><span>その分野の仕事をしている人が身近にいたら、話を聞いてみる</span></label></li>
+        <li><label><input type="checkbox"><span>「②分野を知る」ページで、まだ見ていないジャンルにも目を通す</span></label></li>
+      </ul>
+    </section>
+
+    <section class="season" id="winter" hidden>
+      <h2>冬休みにやること</h2>
+      <p class="body">1年間の後半戦。文理選択に向けて、少しずつ気持ちを固めていく時期です。</p>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>2学期を振り返り、印象に残った授業や出来事を書き出してみる</span></label></li>
+        <li><label><input type="checkbox"><span>「③文理選択」ページの対比表を、もう一度見てみる</span></label></li>
+        <li><label><input type="checkbox"><span>夏休みに調べた分野について、さらに深掘りしてみる</span></label></li>
+        <li><label><input type="checkbox"><span>3学期の文理選択の面談に向けて、今の気持ちを整理しておく</span></label></li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap header-row" style="border:none; padding:0;">
+    <p>○○高等学校 進路指導部</p>
+    <a class="next" href="bunri.html">次へ → 文理選択</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.checklist li').forEach(li => {
+    const input = li.querySelector('input');
+    input.addEventListener('change', () => {
+      li.classList.toggle('checked', input.checked);
+    });
+  });
+
+  const tabSummer = document.getElementById('tab-summer');
+  const tabWinter = document.getElementById('tab-winter');
+  const secSummer = document.getElementById('summer');
+  const secWinter = document.getElementById('winter');
+
+  function showSummer(){
+    tabSummer.classList.add('active'); tabSummer.setAttribute('aria-selected','true');
+    tabWinter.classList.remove('active'); tabWinter.setAttribute('aria-selected','false');
+    secSummer.hidden = false; secWinter.hidden = true;
+  }
+  function showWinter(){
+    tabWinter.classList.add('active'); tabWinter.setAttribute('aria-selected','true');
+    tabSummer.classList.remove('active'); tabSummer.setAttribute('aria-selected','false');
+    secWinter.hidden = false; secSummer.hidden = true;
+  }
+  tabSummer.addEventListener('click', showSummer);
+  tabWinter.addEventListener('click', showWinter);
+</script>
+
+</body>
+</html>

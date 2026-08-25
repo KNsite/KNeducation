@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分野を知る｜1年生 進路ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE6D3;
+    --paper-card:#F7F0DC;
+    --ink:#2B3A42;
+    --ink-soft:#5B6B70;
+    --route:#3D6B57;
+    --route-soft:#6E9484;
+    --compass:#B8863B;
+    --line: rgba(43,58,66,0.16);
+    --max: 1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(184,134,59,0.10), transparent 45%),
+      radial-gradient(ellipse at 85% 10%, rgba(61,107,87,0.08), transparent 50%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  a{color:inherit;}
+
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .back{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--compass); letter-spacing:.08em;}
+
+  .intro{padding:56px 0 30px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--compass); text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--compass);}
+  h1{
+    font-family:'Fraunces',serif; font-weight:600; font-size:clamp(30px,5vw,44px);
+    line-height:1.32; margin:0 0 18px; max-width:16ch;
+  }
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:56ch; margin:0;}
+
+  /* recommend banner */
+  #reco-banner{
+    display:none;
+    margin:28px 0 8px; padding:18px 22px; border-radius:10px;
+    background:linear-gradient(135deg, var(--paper-card), #fbf6e6);
+    border:1.5px solid var(--route);
+  }
+  #reco-banner .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--route);
+    letter-spacing:.06em; margin-bottom:6px; display:block;
+  }
+  #reco-banner p{margin:0; font-size:14.5px;}
+  #reco-banner a{color:var(--route); font-weight:600; text-decoration:none;}
+
+  .search-box{margin:24px 0 4px;}
+  .search-label{
+    display:block; font-family:'IBM Plex Mono',monospace; font-size:11.5px;
+    color:var(--route); letter-spacing:.06em; margin-bottom:8px;
+  }
+  #job-search{
+    width:100%; max-width:440px; padding:13px 16px; font-size:15px;
+    font-family:'Inter',sans-serif; color:var(--ink);
+    background:var(--paper-card); border:1px solid var(--line); border-radius:8px;
+    outline:none; transition:border-color .15s ease;
+  }
+  #job-search:focus{border-color:var(--route);}
+  .search-hint{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft);
+    margin:8px 0 0; min-height:1.4em;
+  }
+
+  /* genre nav */
+  .genre-nav{
+    display:flex; gap:10px; flex-wrap:wrap; padding:30px 0 60px;
+    border-bottom:1px solid var(--line); margin-bottom:56px;
+  }
+  .genre-chip{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    padding:9px 16px; border-radius:100px; border:1px solid var(--line);
+    text-decoration:none; color:var(--ink-soft); background:var(--paper-card);
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .genre-chip:hover{border-color:var(--route); color:var(--ink);}
+  .genre-chip.reco{
+    border-color:var(--route); color:var(--route); font-weight:600;
+    background:linear-gradient(135deg, var(--paper-card), #fbf6e6);
+  }
+  .genre-chip.reco::after{content:" ★"; }
+
+  /* genre section */
+  .genre-section{padding-bottom:70px; scroll-margin-top:24px;}
+  .genre-head{margin-bottom:26px;}
+  .genre-head .eyebrow{color:var(--route); margin-bottom:10px;}
+  .genre-head .eyebrow::before{background:var(--route);}
+  h2{font-family:'Fraunces',serif; font-weight:600; font-size:25px; margin:0 0 8px;}
+  .genre-head p{color:var(--ink-soft); font-size:14.5px; margin:0;}
+
+  .field-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:16px;
+  }
+  .field-card{
+    background:var(--paper-card); border:1px solid var(--line); border-radius:8px;
+    padding:18px 20px; transition:border-color .15s ease, transform .15s ease;
+  }
+  .field-card:hover{border-color:var(--route-soft); transform:translateY(-2px);}
+  .field-card.search-match{border-color:var(--route); box-shadow:0 0 0 2px rgba(61,107,87,0.12);}
+  .field-card.search-dim{opacity:.32;}
+  .field-card h3{font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:0 0 8px;}
+  .field-card p{font-size:13.5px; color:var(--ink-soft); margin:0 0 10px;}
+  .field-card .jobs{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--compass);}
+  .field-card .jobs mark{background:rgba(61,107,87,0.22); color:var(--ink); border-radius:2px; padding:0 2px;}
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+  footer .next{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="back" href="index.html">← 1年生トップへ</a>
+    <span class="brand-sub">ROUTE 03 — 分野を知る</span>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <p class="eyebrow">23の分野・5つのジャンル</p>
+    <h1>まだ知らない分野が、<br>きっとある。</h1>
+    <p class="lede">
+      進路は「知っている選択肢」の中からしか選べません。まずは眺めるだけでいいので、23の分野にざっと目を通してみましょう。気になるものが見つかったら、そこが次に調べる場所です。
+    </p>
+
+    <div id="reco-banner">
+      <span class="tag">自己理解ワークの結果</span>
+      <p id="reco-text"></p>
+    </div>
+
+    <div class="search-box">
+      <label for="job-search" class="search-label">なりたい仕事から、分野を逆引きする</label>
+      <input type="text" id="job-search" placeholder="例：教員、看護師、公務員、エンジニア…">
+      <p class="search-hint" id="search-hint"></p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <nav class="genre-nav" id="genre-nav">
+    <a class="genre-chip" data-genre="iryo" href="#iryo">医療・健康系</a>
+    <a class="genre-chip" data-genre="kyoiku" href="#kyoiku">教育・保育系</a>
+    <a class="genre-chip" data-genre="shakai" href="#shakai">社会・ビジネス系</a>
+    <a class="genre-chip" data-genre="jitsugi" href="#jitsugi">実技・専門系</a>
+    <a class="genre-chip" data-genre="riko" href="#riko">理工系</a>
+  </nav>
+</div>
+
+<div class="wrap">
+
+  <section class="genre-section" id="iryo">
+    <div class="genre-head">
+      <p class="eyebrow">GENRE 01</p>
+      <h2>医療・健康系</h2>
+      <p>人のケアや健康を支える現場に関わる分野です。</p>
+    </div>
+    <div class="field-grid">
+      <div class="field-card"><h3>看護</h3><p>病気やけがをした人のケアをする分野。</p><p class="jobs">看護師／保健師</p></div>
+      <div class="field-card"><h3>作業療法</h3><p>日常生活の動作をリハビリで支える分野。</p><p class="jobs">作業療法士</p></div>
+      <div class="field-card"><h3>理学療法</h3><p>運動機能の回復を支える分野。</p><p class="jobs">理学療法士</p></div>
+      <div class="field-card"><h3>臨床検査</h3><p>血液や細胞を調べて診断を支える分野。</p><p class="jobs">臨床検査技師</p></div>
+      <div class="field-card"><h3>栄養</h3><p>食事や栄養の面から健康を支える分野。</p><p class="jobs">管理栄養士／栄養士</p></div>
+      <div class="field-card"><h3>医学</h3><p>病気の診断・治療を行う医師を目指す分野。</p><p class="jobs">医師</p></div>
+      <div class="field-card"><h3>薬学</h3><p>薬の専門知識で治療を支える分野。</p><p class="jobs">薬剤師</p></div>
+      <div class="field-card"><h3>獣医学</h3><p>動物の健康を診る分野。</p><p class="jobs">獣医師</p></div>
+    </div>
+  </section>
+
+  <section class="genre-section" id="kyoiku">
+    <div class="genre-head">
+      <p class="eyebrow">GENRE 02</p>
+      <h2>教育・保育系</h2>
+      <p>誰かの成長や学びを支える分野です。なお、教員は「教育」だけでなく、理学・文学・外国語・スポーツ科学など専門分野を経由して目指す道もあります。</p>
+    </div>
+    <div class="field-grid">
+      <div class="field-card"><h3>教育</h3><p>学校で子どもたちの学びを支える分野。</p><p class="jobs">小学校教員／中学校教員／高校教員</p></div>
+      <div class="field-card"><h3>保育</h3><p>乳幼児の成長を支える分野。</p><p class="jobs">保育士／幼稚園教諭</p></div>
+    </div>
+  </section>
+
+  <section class="genre-section" id="shakai">
+    <div class="genre-head">
+      <p class="eyebrow">GENRE 03</p>
+      <h2>社会・ビジネス系</h2>
+      <p>社会の仕組みや人と人とのつながりを動かす分野です。</p>
+    </div>
+    <div class="field-grid">
+      <div class="field-card"><h3>経済</h3><p>お金や市場のしくみを学ぶ分野。</p><p class="jobs">金融機関職員／公務員</p></div>
+      <div class="field-card"><h3>経営</h3><p>組織や事業の運営を学ぶ分野。</p><p class="jobs">企業の経営・企画職</p></div>
+      <div class="field-card"><h3>国際関係</h3><p>世界の政治・文化・経済のつながりを学ぶ分野。</p><p class="jobs">商社／外交官／国際機関職員</p></div>
+      <div class="field-card"><h3>法学</h3><p>法律のしくみを学ぶ分野。</p><p class="jobs">弁護士／公務員／社会科教員</p></div>
+      <div class="field-card"><h3>外国語系</h3><p>外国語の運用力や異文化理解を学ぶ分野。</p><p class="jobs">通訳者／翻訳家／英語教員</p></div>
+      <div class="field-card"><h3>文学系</h3><p>言葉・文学・歴史を深く読み解く分野。</p><p class="jobs">編集者／学芸員／国語教員</p></div>
+    </div>
+  </section>
+
+  <section class="genre-section" id="jitsugi">
+    <div class="genre-head">
+      <p class="eyebrow">GENRE 04</p>
+      <h2>実技・専門系</h2>
+      <p>手や体を使い、技を磨いて形にする分野です。</p>
+    </div>
+    <div class="field-grid">
+      <div class="field-card"><h3>スポーツ科学</h3><p>スポーツと身体のしくみを学ぶ分野。</p><p class="jobs">保健体育教員／トレーナー</p></div>
+      <div class="field-card"><h3>美容</h3><p>美容の知識と技術で人を支える分野。</p><p class="jobs">美容師／エステティシャン</p></div>
+      <div class="field-card"><h3>福祉</h3><p>高齢者や障がいのある人の生活を支える分野。</p><p class="jobs">社会福祉士／介護福祉士</p></div>
+      <div class="field-card"><h3>調理</h3><p>食の技術と知識を学ぶ分野。</p><p class="jobs">調理師／パティシエ</p></div>
+    </div>
+  </section>
+
+  <section class="genre-section" id="riko">
+    <div class="genre-head">
+      <p class="eyebrow">GENRE 05</p>
+      <h2>理工系</h2>
+      <p>しくみを調べたり、論理的に組み立てたりする分野です。</p>
+    </div>
+    <div class="field-grid">
+      <div class="field-card"><h3>工学（機械・電気電子）</h3><p>ものづくりのしくみを学ぶ分野。</p><p class="jobs">機械エンジニア／電気設計士</p></div>
+      <div class="field-card"><h3>情報工学・IT</h3><p>コンピュータやシステムを学ぶ分野。</p><p class="jobs">エンジニア／プログラマー</p></div>
+      <div class="field-card"><h3>建築・土木</h3><p>建物やまちをつくる分野。</p><p class="jobs">建築士／施工管理技士</p></div>
+      <div class="field-card"><h3>理学</h3><p>数学・物理・化学・生物のしくみを探究する分野。</p><p class="jobs">研究者／理科教員／数学教員</p></div>
+      <div class="field-card"><h3>農学・生命科学</h3><p>生き物や食料生産を科学する分野。</p><p class="jobs">研究者／食品開発</p></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap header-row" style="border:none; padding:0;">
+    <p>○○高等学校 進路指導部</p>
+    <a class="next" href="kyuka.html">次へ → 長期休暇の使い方</a>
+  </div>
+</footer>
+
+<script>
+  const genreNames = {
+    iryo: "医療・健康系",
+    kyoiku: "教育・保育系",
+    shakai: "社会・ビジネス系",
+    jitsugi: "実技・専門系",
+    riko: "理工系"
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const genreParam = params.get("genre");
+
+  if (genreParam) {
+    const genres = genreParam.split(",").filter(g => genreNames[g]);
+    if (genres.length > 0) {
+      document.querySelectorAll(".genre-chip").forEach(chip => {
+        if (genres.includes(chip.dataset.genre)) chip.classList.add("reco");
+      });
+
+      const banner = document.getElementById("reco-banner");
+      const text = document.getElementById("reco-text");
+      const names = genres.map(g => genreNames[g]).join(" と ");
+      const links = genres.map(g => '<a href="#' + g + '">' + genreNames[g] + '</a>').join(" ／ ");
+      text.innerHTML = names + " に近いようです。まずは " + links + " から見てみましょう。";
+      banner.style.display = "block";
+    }
+  }
+
+  // ---- 仕事名からの逆引き検索 ----
+  const searchInput = document.getElementById("job-search");
+  const searchHint = document.getElementById("search-hint");
+  const allCards = Array.from(document.querySelectorAll(".field-card"));
+
+  // 表記ゆれ・同義語のグループ（どれで検索してもグループ全体でヒットさせる）
+  const synonymGroups = [
+    ["教員","教諭","教師","先生"],
+    ["医師","医者","お医者さん"],
+    ["獣医師","獣医"],
+    ["保育士","保育者","保育の先生"],
+    ["看護師","看護士","ナース"],
+    ["建築士","建築家"],
+    ["エンジニア","技術者","プログラマー","システムエンジニア","SE"],
+    ["研究者","学者"],
+    ["管理栄養士","栄養士"],
+    ["公務員","役所","市役所","県庁"],
+    ["薬剤師","薬の専門家"],
+    ["弁護士","法律家"],
+    ["翻訳家","翻訳者"],
+    ["通訳者","通訳"],
+    ["トレーナー","インストラクター"],
+    ["パティシエ","菓子職人","ケーキ職人"],
+    ["調理師","コック","シェフ"]
+  ];
+
+  function getSearchTerms(q){
+    const lower = q.toLowerCase();
+    for (const group of synonymGroups){
+      if (group.some(term => term.toLowerCase().includes(lower) || lower.includes(term.toLowerCase()))){
+        return group;
+      }
+    }
+    return [q];
+  }
+
+  // 各カードの元のjobsテキストを保存（ハイライト解除時に復元するため）
+  allCards.forEach(card => {
+    const jobsEl = card.querySelector(".jobs");
+    card.dataset.jobsOriginal = jobsEl.textContent;
+    card.dataset.nameText = card.querySelector("h3").textContent;
+  });
+
+  searchInput.addEventListener("input", () => {
+    const q = searchInput.value.trim();
+    const jobsEls = document.querySelectorAll(".field-card .jobs");
+
+    if (q === "") {
+      allCards.forEach(card => {
+        card.classList.remove("search-match", "search-dim");
+        card.querySelector(".jobs").textContent = card.dataset.jobsOriginal;
+      });
+      searchHint.textContent = "";
+      return;
+    }
+
+    const terms = getSearchTerms(q);
+    let matchCount = 0;
+
+    allCards.forEach(card => {
+      const original = card.dataset.jobsOriginal;
+      const nameText = card.dataset.nameText;
+      const haystack = (nameText + " " + original).toLowerCase();
+      const matchedTerm = terms.find(t => haystack.includes(t.toLowerCase()));
+      const jobsEl = card.querySelector(".jobs");
+
+      if (matchedTerm) {
+        matchCount++;
+        card.classList.add("search-match");
+        card.classList.remove("search-dim");
+        const idx = original.toLowerCase().indexOf(matchedTerm.toLowerCase());
+        if (idx >= 0) {
+          jobsEl.innerHTML =
+            original.slice(0, idx) +
+            "<mark>" + original.slice(idx, idx + matchedTerm.length) + "</mark>" +
+            original.slice(idx + matchedTerm.length);
+        } else {
+          jobsEl.textContent = original;
+        }
+      } else {
+        card.classList.remove("search-match");
+        card.classList.add("search-dim");
+        jobsEl.textContent = original;
+      }
+    });
+
+    searchHint.textContent = matchCount > 0
+      ? matchCount + "件の分野で見つかりました"
+      : "見つかりませんでした。別のキーワードで試してみてください";
+  });
+</script>
+
+</body>
+</html>

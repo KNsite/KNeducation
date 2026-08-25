@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>進路タイプ整理｜2年生 進路ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFF1EC;
+    --card:#F7F8F3;
+    --ink:#24312B;
+    --ink-soft:#5C6B62;
+    --road:#C97A3D;
+    --road-soft:#E0A873;
+    --marker:#2F6F5E;
+    --line: rgba(36,49,43,0.15);
+    --max: 900px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(180deg, rgba(201,122,61,0.06), transparent 22%),
+      radial-gradient(ellipse at 85% 5%, rgba(47,111,94,0.08), transparent 45%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 26px;}
+  a{color:inherit;}
+
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .back{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--road); letter-spacing:.08em;}
+
+  main{padding:56px 0 90px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--road); text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--road);}
+  h1{
+    font-family:'Spectral',serif; font-weight:700; font-size:clamp(28px,5vw,42px);
+    line-height:1.32; margin:0 0 20px; max-width:16ch;
+  }
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:58ch; margin:0 0 8px;}
+
+  section.block{padding:48px 0; border-bottom:1px solid var(--line);}
+  section.block:last-of-type{border-bottom:none;}
+  .block-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--marker);
+    letter-spacing:.08em; margin-bottom:10px;
+  }
+  h2{font-family:'Spectral',serif; font-weight:700; font-size:24px; margin:0 0 16px;}
+  .block p.body{font-size:14.5px; color:var(--ink-soft); margin:0 0 12px; max-width:60ch;}
+
+  table.compare{
+    width:100%; border-collapse:collapse; margin-top:20px;
+    background:var(--card); border-radius:8px; overflow:hidden;
+    border:1px solid var(--line);
+  }
+  table.compare th, table.compare td{
+    padding:15px 16px; text-align:left; font-size:13.5px; border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  table.compare thead th{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.04em;
+    color:var(--ink-soft); background:rgba(47,111,94,0.06);
+  }
+  table.compare tbody th{
+    font-family:'Spectral',serif; font-weight:700; font-size:13.5px; color:var(--ink); width:20%;
+  }
+  table.compare tr:last-child td, table.compare tr:last-child th{border-bottom:none;}
+  table.compare td{border-left:3px solid transparent;}
+  table.compare td.c-univ{border-left-color:var(--marker);}
+  table.compare td.c-tandai{border-left-color:var(--road);}
+  table.compare td.c-senmon{border-left-color:var(--road-soft);}
+  table.compare td.c-shushoku{border-left-color:var(--ink-soft);}
+
+  .view-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:14px; margin-top:18px;}
+  .view-card{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:18px 20px;
+  }
+  .view-card h3{font-family:'Spectral',serif; font-size:15.5px; font-weight:700; margin:0 0 8px;}
+  .view-card p{font-size:13.5px; color:var(--ink-soft); margin:0;}
+
+  .consult-box{
+    background:linear-gradient(135deg, var(--card), #eef4ef);
+    border:1.5px solid var(--marker); border-radius:10px; padding:22px 24px; margin-top:8px;
+  }
+  .consult-box p{font-size:14px; color:var(--ink-soft); margin:0;}
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+  footer .next{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+
+  @media (max-width:640px){
+    table.compare, table.compare tbody, table.compare tr, table.compare td, table.compare th{display:block; width:auto;}
+    table.compare thead{display:none;}
+    table.compare tr{border-bottom:1px solid var(--line); padding:14px 0;}
+    table.compare tbody th{padding-bottom:4px;}
+    table.compare td{border-left:none; padding:6px 0 6px 14px; position:relative;}
+    table.compare td.c-univ::before{content:"大学｜"; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--marker);}
+    table.compare td.c-tandai::before{content:"短大｜"; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--road);}
+    table.compare td.c-senmon::before{content:"専門学校｜"; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--road-soft);}
+    table.compare td.c-shushoku::before{content:"就職｜"; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="back" href="index.html">← 2年生トップへ</a>
+    <span class="brand-sub">STOP 01 — 進路タイプ整理</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">大学・短大・専門学校・就職</p>
+    <h1>どこで学ぶかも、<br>進路の一部。</h1>
+    <p class="lede">「何を学ぶか」が見えてきたら、次は「どこで学ぶか」です。大学・短大・専門学校・就職、それぞれの違いをざっくりつかんでおきましょう。</p>
+
+    <section class="block" id="compare">
+      <p class="block-eyebrow">01 — タイプの比較</p>
+      <h2>4つの進路タイプ</h2>
+      <table class="compare">
+        <thead>
+          <tr><th></th><th>大学</th><th>短大</th><th>専門学校</th><th>就職</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>学べる期間の目安</th>
+            <td class="c-univ">4年（学部によりさらに長い場合も）</td>
+            <td class="c-tandai">2年程度、短め</td>
+            <td class="c-senmon">2年程度が中心</td>
+            <td class="c-shushoku">卒業後すぐに現場へ</td>
+          </tr>
+          <tr>
+            <th>学びの特徴</th>
+            <td class="c-univ">幅広い教養と専門をじっくり学ぶ。研究にも取り組める</td>
+            <td class="c-tandai">専門分野を凝縮して学ぶ、実践力重視</td>
+            <td class="c-senmon">資格取得や実務スキルに直結する内容を集中して学ぶ</td>
+            <td class="c-shushoku">働きながら現場で実地に学ぶ</td>
+          </tr>
+          <tr>
+            <th>卒業後の進路傾向</th>
+            <td class="c-univ">研究職・専門職から一般企業まで幅広い</td>
+            <td class="c-tandai">保育・栄養など、特定の資格職につながりやすい</td>
+            <td class="c-senmon">特定の資格・職種に直結しやすい</td>
+            <td class="c-shushoku">早期に収入を得ながら、経験を積んでいく</td>
+          </tr>
+          <tr>
+            <th>学費の傾向</th>
+            <td class="c-univ">通う期間が長いぶん、総額は大きくなりやすい</td>
+            <td class="c-tandai">大学より短い分、抑えられる傾向</td>
+            <td class="c-senmon">大学より抑えられる傾向。分野による差は大きい</td>
+            <td class="c-shushoku">学費はかからない</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="body" style="margin-top:16px;">※ 学費は分野・学校によって大きく異なります。ここでは相対的な傾向のみを紹介しています。具体的な金額は、気になる学校のパンフレットや公式サイトで確認しましょう。</p>
+    </section>
+
+    <section class="block" id="viewpoint">
+      <p class="block-eyebrow">02 — 選ぶときの視点</p>
+      <h2>自分に合いそうなタイプを考える</h2>
+      <div class="view-grid">
+        <div class="view-card"><h3>じっくり広く学びたいか</h3><p>幅広い教養や研究に関心があるなら、大学が向いていることが多いです。</p></div>
+        <div class="view-card"><h3>専門を絞って早く実践したいか</h3><p>特定の資格・職種を目指すなら、短大・専門学校が近道になることがあります。</p></div>
+        <div class="view-card"><h3>研究や探究に興味があるか</h3><p>じっくり調べたり実験したりすることに関心があるなら、大学が合っているかもしれません。</p></div>
+        <div class="view-card"><h3>早く現場に出たいか</h3><p>実際に働きながら学びたいなら、就職という選択肢も視野に入ります。</p></div>
+      </div>
+    </section>
+
+    <section class="block" id="consult">
+      <p class="block-eyebrow">03 — 迷ったときは</p>
+      <h2>一人で決めなくて大丈夫</h2>
+      <div class="consult-box">
+        <p>進路タイプの選択は、分野研究の深掘りと合わせて少しずつ形になっていくものです。迷ったら、担任の先生や進路指導の先生に今の考えを話してみましょう。同じように迷った先輩たちの例も聞けるはずです。</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap header-row" style="border:none; padding:0;">
+    <p>○○高等学校 進路指導部</p>
+    <a class="next" href="bunya-kenkyu.html">次へ → 分野研究の深掘り</a>
+  </div>
+</footer>
+
+</body>
+</html>

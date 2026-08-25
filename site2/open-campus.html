@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>オープンキャンパスガイド｜2年生 進路ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFF1EC;
+    --card:#F7F8F3;
+    --ink:#24312B;
+    --ink-soft:#5C6B62;
+    --road:#C97A3D;
+    --road-soft:#E0A873;
+    --marker:#2F6F5E;
+    --line: rgba(36,49,43,0.15);
+    --max: 900px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(180deg, rgba(201,122,61,0.06), transparent 22%),
+      radial-gradient(ellipse at 85% 5%, rgba(47,111,94,0.08), transparent 45%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 26px;}
+  a{color:inherit;}
+
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .back{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--road); letter-spacing:.08em;}
+
+  main{padding:56px 0 90px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--road); text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--road);}
+  h1{
+    font-family:'Spectral',serif; font-weight:700; font-size:clamp(28px,5vw,42px);
+    line-height:1.32; margin:0 0 20px; max-width:16ch;
+  }
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:58ch; margin:0 0 8px;}
+
+  .note{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft);
+    background:var(--card); border:1px dashed var(--line); border-radius:6px;
+    padding:10px 14px; margin-top:16px; max-width:58ch;
+  }
+
+  section.block{padding:50px 0; border-bottom:1px solid var(--line);}
+  section.block:last-of-type{border-bottom:none;}
+  .block-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--marker);
+    letter-spacing:.08em; margin-bottom:10px; display:block;
+  }
+  h2{font-family:'Spectral',serif; font-weight:700; font-size:24px; margin:0 0 14px;}
+  .block p.body{font-size:14.5px; color:var(--ink-soft); margin:0 0 16px; max-width:60ch;}
+
+  .checklist{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .checklist li{
+    background:var(--card); border:1px solid var(--line); border-radius:8px;
+    padding:14px 16px; transition:border-color .15s ease;
+  }
+  .checklist li:hover{border-color:var(--road-soft);}
+  .checklist li.checked{border-color:var(--marker); background:linear-gradient(135deg, var(--card), #eef4ef);}
+  .checklist label{display:flex; gap:12px; align-items:flex-start; cursor:pointer;}
+  .checklist input[type=checkbox]{margin-top:3px; accent-color:var(--marker); width:16px; height:16px; flex-shrink:0;}
+  .checklist span{font-size:14.5px;}
+
+  /* records */
+  #records-area{display:flex; flex-direction:column; gap:18px; margin-top:8px;}
+  .record-card{
+    background:var(--card); border:1.5px solid var(--marker); border-radius:10px; padding:22px 24px; position:relative;
+  }
+  .record-card .rc-top{display:flex; gap:12px; margin-bottom:14px; flex-wrap:wrap;}
+  .record-card .rc-top input{flex:1; min-width:160px;}
+  .record-card input, .record-card textarea{
+    width:100%; padding:10px 12px; font-family:'Inter',sans-serif; font-size:14px; color:var(--ink);
+    background:#fff; border:1px solid var(--line); border-radius:6px; outline:none; resize:vertical;
+  }
+  .record-card input:focus, .record-card textarea:focus{border-color:var(--marker);}
+  .record-card label{
+    display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);
+    letter-spacing:.04em; margin-bottom:5px;
+  }
+  .record-card .rc-field{margin-bottom:12px;}
+  .remove-btn{
+    position:absolute; top:16px; right:18px; background:none; border:none;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); cursor:pointer;
+    border-bottom:1px dashed var(--ink-soft);
+  }
+  .add-btn{
+    margin-top:16px; background:var(--marker); color:var(--card); border:none;
+    padding:12px 22px; border-radius:6px; font-weight:600; font-size:14px; cursor:pointer;
+    font-family:'Inter',sans-serif;
+  }
+  .add-btn:hover{opacity:.9;}
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+  footer .next{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="back" href="index.html">← 2年生トップへ</a>
+    <span class="brand-sub">STOP 04 — オープンキャンパスガイド</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">実際に見て、感じてくる</p>
+    <h1>行ってみないと、<br>わからないことがある。</h1>
+    <p class="lede">パンフレットやWebサイトだけではわからない雰囲気やリアルな声は、実際に足を運んでこそ得られます。気になる学校が決まったら、まずは申し込んでみましょう。</p>
+    <p class="note">※ 下の記録欄はブラウザを閉じると消えます。大事な内容はノートにも書き写しておきましょう。</p>
+
+    <section class="block" id="before">
+      <span class="block-eyebrow">01 — 行く前の準備</span>
+      <h2>申し込み前にやっておくこと</h2>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>学校の公式サイトで、開催日程と申し込み方法を確認する</span></label></li>
+        <li><label><input type="checkbox"><span>参加したいプログラム（体験授業・説明会など）を確認して申し込む</span></label></li>
+        <li><label><input type="checkbox"><span>持ち物（筆記用具、メモ帳、上履きが必要な場合はそれも）を準備する</span></label></li>
+        <li><label><input type="checkbox"><span>気になっている分野や学部について、事前に少し調べておく</span></label></li>
+        <li><label><input type="checkbox"><span>アクセス方法・所要時間を調べておく</span></label></li>
+      </ul>
+    </section>
+
+    <section class="block" id="during">
+      <span class="block-eyebrow">02 — 当日見るべきポイント</span>
+      <h2>現地でチェックしたいこと</h2>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>体験授業の内容は、自分の興味と合っていたか</span></label></li>
+        <li><label><input type="checkbox"><span>施設や設備（図書館・実習室など）の様子</span></label></li>
+        <li><label><input type="checkbox"><span>在学生の雰囲気や、話を聞けたときの印象</span></label></li>
+        <li><label><input type="checkbox"><span>自宅からの通学時間・通いやすさ</span></label></li>
+        <li><label><input type="checkbox"><span>学費や奨学金制度について、説明を聞けたか</span></label></li>
+      </ul>
+    </section>
+
+    <section class="block" id="records">
+      <span class="block-eyebrow">03 — 行った後の記録</span>
+      <h2>訪問記録をつけよう</h2>
+      <p class="body">行った学校ごとに記録を残しておくと、後で比較するときに役立ちます。「＋記録を追加」で、行った学校の数だけカードを増やせます。</p>
+      <div id="records-area"></div>
+      <button class="add-btn" id="add-record">＋ 記録を追加</button>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap header-row" style="border:none; padding:0;">
+    <p>○○高等学校 進路指導部</p>
+    <a class="next" href="kyuka.html">次へ → 長期休暇の使い方</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.checklist li').forEach(li => {
+    const input = li.querySelector('input');
+    input.addEventListener('change', () => {
+      li.classList.toggle('checked', input.checked);
+    });
+  });
+
+  const recordsArea = document.getElementById('records-area');
+  const addBtn = document.getElementById('add-record');
+  let recordCount = 0;
+
+  function addRecord(){
+    recordCount++;
+    const card = document.createElement('div');
+    card.className = 'record-card';
+    card.innerHTML = `
+      <button class="remove-btn" type="button">削除</button>
+      <div class="rc-top">
+        <div style="flex:1;">
+          <label>学校名</label>
+          <input type="text" placeholder="例：○○大学">
+        </div>
+        <div style="flex:1;">
+          <label>訪問日</label>
+          <input type="text" placeholder="例：8月10日">
+        </div>
+      </div>
+      <div class="rc-field">
+        <label>感じたこと・気づいたこと</label>
+        <textarea rows="3" placeholder="体験授業の内容、施設の様子、在学生の印象など"></textarea>
+      </div>
+      <div class="rc-field">
+        <label>もう一度確認したいこと</label>
+        <textarea rows="2" placeholder="次回までに調べたいこと、聞きたいことなど"></textarea>
+      </div>
+    `;
+    card.querySelector('.remove-btn').addEventListener('click', () => card.remove());
+    recordsArea.appendChild(card);
+  }
+
+  addBtn.addEventListener('click', addRecord);
+  addRecord(); // 最初に1枚表示
+</script>
+
+</body>
+</html>

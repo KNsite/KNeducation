@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2年生 進路ナビ｜選んだ道を進む</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFF1EC;
+    --panel:#E4E7DE;
+    --card:#F7F8F3;
+    --ink:#24312B;
+    --ink-soft:#5C6B62;
+    --road:#C97A3D;
+    --road-soft:#E0A873;
+    --marker:#2F6F5E;
+    --line: rgba(36,49,43,0.15);
+    --max: 1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(180deg, rgba(201,122,61,0.06), transparent 22%),
+      radial-gradient(ellipse at 85% 5%, rgba(47,111,94,0.08), transparent 45%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  a{color:inherit;}
+
+  /* ---- header ---- */
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;}
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-mark{
+    width:34px;height:34px;border-radius:6px;
+    border:1.5px solid var(--road);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--road);
+    transform:rotate(45deg);
+  }
+  .brand-mark span{transform:rotate(-45deg); display:block;}
+  .brand-text{font-family:'Spectral',serif; font-size:17px; font-weight:600; letter-spacing:.01em;}
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-soft); letter-spacing:.08em;}
+
+  nav.grades{display:flex; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:12px;}
+  nav.grades a{
+    padding:6px 12px; border-radius:4px; border:1px solid var(--line);
+    text-decoration:none; color:var(--ink-soft); letter-spacing:.03em;
+  }
+  nav.grades a.active{
+    background:var(--road); border-color:var(--road); color:var(--card); font-weight:500;
+  }
+
+  /* ---- hero ---- */
+  .hero{padding:76px 0 60px; position:relative;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--road); text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--road);}
+  h1{
+    font-family:'Spectral',serif; font-weight:700; font-size:clamp(34px,5.4vw,54px);
+    line-height:1.28; margin:0 0 22px; max-width:16ch;
+  }
+  h1 em{font-style:italic; font-weight:500; color:var(--road);}
+  .lede{font-size:16.5px; color:var(--ink-soft); max-width:48ch; margin:0 0 34px;}
+  .cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--road); color:var(--card); text-decoration:none;
+    padding:14px 24px; border-radius:5px; font-weight:600; font-size:15px;
+    box-shadow:0 6px 18px rgba(201,122,61,0.28);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .cta:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(201,122,61,0.34);}
+
+  /* ---- road section ---- */
+  .road-section{padding:16px 0 88px; position:relative;}
+  .road-head{margin-bottom:44px;}
+  .road-head .eyebrow{color:var(--marker);}
+  .road-head .eyebrow::before{background:var(--marker);}
+  h2{font-family:'Spectral',serif; font-weight:700; font-size:26px; margin:0 0 10px;}
+  .road-head p{color:var(--ink-soft); font-size:15px; max-width:52ch; margin:0;}
+
+  .road{position:relative;}
+  .road-line{
+    position:absolute; left:29px; top:10px; bottom:10px; width:3px;
+    background:linear-gradient(var(--road-soft), var(--marker));
+    border-radius:3px;
+    opacity:.6;
+  }
+  .stop{
+    display:grid; grid-template-columns:60px 1fr; gap:22px;
+    position:relative; padding-bottom:34px;
+  }
+  .stop:last-child{padding-bottom:0;}
+  .marker{
+    width:60px;height:60px;border-radius:6px;
+    background:var(--card); border:1.5px solid var(--road);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; color:var(--road);
+    z-index:1;
+  }
+  .marker .km{font-size:8.5px; letter-spacing:.06em; opacity:.8;}
+  .marker .num{font-size:16px; font-weight:500;}
+  .stop.peak .marker{
+    background:var(--marker); border-color:var(--marker); color:var(--card);
+    box-shadow:0 0 0 6px rgba(47,111,94,0.14);
+  }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:8px;
+    padding:22px 24px; transition:border-color .15s ease, transform .15s ease;
+  }
+  .stop.peak .card{
+    border-color:var(--marker); background:linear-gradient(135deg, var(--card), #eef4ef);
+  }
+  .card:hover{transform:translateX(3px); border-color:var(--road-soft);}
+  .card-top{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  .card-label{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--road); letter-spacing:.08em;
+  }
+  .card h3{font-family:'Spectral',serif; font-size:20px; font-weight:700; margin:4px 0 8px;}
+  .card p{color:var(--ink-soft); font-size:14.5px; margin:0 0 14px; max-width:56ch;}
+  .card .go{
+    font-size:13.5px; font-weight:600; color:var(--marker); text-decoration:none;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .badge{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; background:var(--marker);
+    color:var(--card); padding:3px 9px; border-radius:4px; letter-spacing:.05em;
+  }
+
+  /* ---- footer ---- */
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+  footer .next{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+
+  @media (max-width:600px){
+    .stop{grid-template-columns:48px 1fr; gap:14px;}
+    .marker{width:48px;height:48px;}
+    .marker .num{font-size:13px;}
+    .road-line{left:23px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <div class="brand">
+      <div class="brand-mark"><span>N</span></div>
+      <div>
+        <div class="brand-text">進路ナビ</div>
+        <div class="brand-sub">2nd YEAR EDITION</div>
+      </div>
+    </div>
+    <nav class="grades">
+      <a href="../index.html">学年選択</a>
+      <a href="../site1/index.html">1年生</a>
+      <a href="#" class="active">2年生</a>
+      <a href="../site3/index.html">3年生</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">高校2年生のための進路ナビ</p>
+    <h1>選んだ道を、<br><em>進んでいこう。</em></h1>
+    <p class="lede">
+      1年生で広げた地図から、少しずつ道が見えてきたはず。ここからは、気になる分野をじっくり掘り下げて、進路タイプや学校を具体的に調べていく段階です。
+    </p>
+    <a class="cta" href="bunya-kenkyu.html">分野研究シートを開く →</a>
+  </div>
+</section>
+
+<section class="road-section">
+  <div class="wrap">
+    <div class="road-head">
+      <p class="eyebrow">この1年で進む道のり</p>
+      <h2>7つの地点を、順に進んでいく</h2>
+      <p>1年生の時より一歩踏み込んで、具体的に調べて、選んでいく1年です。</p>
+    </div>
+
+    <div class="road">
+      <div class="road-line"></div>
+
+      <div class="stop">
+        <div class="marker"><span class="km">STOP</span><span class="num">01</span></div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">STOP 01</span>
+          </div>
+          <h3>進路タイプ整理</h3>
+          <p>大学・短大・専門学校・就職、それぞれの学びの特徴と卒業後の傾向を比較します。自分に合いそうなタイプを考える視点も紹介します。</p>
+          <a class="go" href="shinro-type.html">タイプを比較する →</a>
+        </div>
+      </div>
+
+      <div class="stop peak">
+        <div class="marker"><span class="km">STOP</span><span class="num">02</span></div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">STOP 02 — ここが本番</span>
+            <span class="badge">最重要</span>
+          </div>
+          <h3>分野研究の深掘り</h3>
+          <p>気になる分野を2〜3個に絞り、学ぶ内容・関連職業・必要な科目・学校の種類を書き込み式シートで比較します。気になる学校名を記録する欄も。</p>
+          <a class="go" href="bunya-kenkyu.html">研究シートを開く →</a>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="marker"><span class="km">STOP</span><span class="num">03</span></div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">STOP 03</span>
+          </div>
+          <h3>受験方法を知ろう</h3>
+          <p>気になる分野・学校ごとに、受験に必要な科目がどう変わるかを確認します。一般選抜・学校推薦型・総合型選抜といった受験方法の違いも、ざっくりと紹介します。</p>
+          <a class="go" href="juken-hoho.html">科目・方法を確認する →</a>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="marker"><span class="km">STOP</span><span class="num">04</span></div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">STOP 04</span>
+          </div>
+          <h3>オープンキャンパスガイド</h3>
+          <p>行く意味、申し込み方法、当日見るべきポイントをチェックリストで紹介します。行った後の感想を書き留める記録欄つき。</p>
+          <a class="go" href="open-campus.html">ガイドを見る →</a>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="marker"><span class="km">STOP</span><span class="num">05</span></div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">STOP 05</span>
+          </div>
+          <h3>長期休暇の使い方</h3>
+          <p>夏休み・冬休みにやることリストと、時期ごとの優先順位の目安を紹介します。休み明けに振り返るポイントも。</p>
+          <a class="go" href="kyuka.html">使い方を見る →</a>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="marker"><span class="km">STOP</span><span class="num">06</span></div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">STOP 06</span>
+          </div>
+          <h3>志望校を考える</h3>
+          <p>気になる学校・学部学科を書き出し、受験科目やアドミッションポリシーを調べて、自分に合っているかを考えます。一般選抜・学校推薦型・総合型選抜のどれで受けるかも、ここで方向性を考えます。</p>
+          <a class="go" href="shibou-kou.html">志望校シートを開く →</a>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="marker"><span class="km">STOP</span><span class="num">07</span></div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-label">STOP 07 — 3年生へ</span>
+          </div>
+          <h3>3年生への準備リスト</h3>
+          <p>2年生のうちにやっておきたいことをチェックリストで確認し、3年生になったら見るサイト（志望理由書・面接対策）を先行案内します。</p>
+          <a class="go" href="junbi-list.html">準備リストを見る →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap header-row" style="border:none; padding:0;">
+    <p>○○高等学校 進路指導部</p>
+    <a class="next" href="../site3/index.html">3年生になったら → 3年生サイトへ</a>
+  </div>
+</footer>
+
+</body>
+</html>

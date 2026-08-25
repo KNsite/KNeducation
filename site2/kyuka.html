@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>長期休暇の使い方｜2年生 進路ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFF1EC;
+    --card:#F7F8F3;
+    --ink:#24312B;
+    --ink-soft:#5C6B62;
+    --road:#C97A3D;
+    --road-soft:#E0A873;
+    --marker:#2F6F5E;
+    --line: rgba(36,49,43,0.15);
+    --max: 860px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(180deg, rgba(201,122,61,0.06), transparent 22%),
+      radial-gradient(ellipse at 85% 5%, rgba(47,111,94,0.08), transparent 45%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 26px;}
+  a{color:inherit;}
+
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .back{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--road); letter-spacing:.08em;}
+
+  main{padding:56px 0 90px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--road); text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--road);}
+  h1{
+    font-family:'Spectral',serif; font-weight:700; font-size:clamp(28px,5vw,42px);
+    line-height:1.32; margin:0 0 20px; max-width:16ch;
+  }
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:56ch; margin:0 0 32px;}
+
+  .tabs{display:flex; gap:8px; margin-bottom:8px; border-bottom:1px solid var(--line);}
+  .tab{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.03em;
+    background:none; border:none; padding:12px 4px; margin-right:24px;
+    color:var(--ink-soft); cursor:pointer; position:relative; top:1px;
+  }
+  .tab.active{color:var(--marker); font-weight:600; border-bottom:2px solid var(--marker);}
+
+  .season{padding:40px 0 20px;}
+  .season h2{font-family:'Spectral',serif; font-weight:700; font-size:23px; margin:0 0 10px;}
+  .season p.body{font-size:14.5px; color:var(--ink-soft); margin:0 0 18px; max-width:58ch;}
+
+  .checklist{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .checklist li{
+    background:var(--card); border:1px solid var(--line); border-radius:8px;
+    padding:14px 16px; transition:border-color .15s ease;
+  }
+  .checklist li:hover{border-color:var(--road-soft);}
+  .checklist li.checked{border-color:var(--marker); background:linear-gradient(135deg, var(--card), #eef4ef);}
+  .checklist label{display:flex; gap:12px; align-items:flex-start; cursor:pointer;}
+  .checklist input{margin-top:3px; accent-color:var(--marker); width:16px; height:16px; flex-shrink:0;}
+  .checklist span{font-size:14.5px;}
+
+  .reflect-box{
+    background:linear-gradient(135deg, var(--card), #fdf3e9);
+    border:1.5px solid var(--road); border-radius:10px; padding:20px 22px; margin-top:24px;
+  }
+  .reflect-box h3{font-family:'Spectral',serif; font-size:16px; font-weight:700; margin:0 0 8px;}
+  .reflect-box p{font-size:14px; color:var(--ink-soft); margin:0;}
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+  footer .next{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="back" href="index.html">← 2年生トップへ</a>
+    <span class="brand-sub">STOP 05 — 長期休暇の使い方</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">まとまった時間を、行動に変える</p>
+    <h1>休みの間に、<br>一歩前へ進もう。</h1>
+    <p class="lede">2年生の長期休暇は、オープンキャンパスや分野研究など、実際に動く時間です。夏と冬で優先すべきことは少し違います。</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" id="tab-summer" role="tab" aria-selected="true">夏休み</button>
+      <button class="tab" id="tab-winter" role="tab" aria-selected="false">冬休み</button>
+    </div>
+
+    <section class="season" id="summer">
+      <h2>夏休みにやること</h2>
+      <p class="body">2年生の夏休みは、オープンキャンパスに実際に足を運べる貴重な機会です。複数校を比較する気持ちで動いてみましょう。</p>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>気になる学校のオープンキャンパスに参加する（できれば複数校）</span></label></li>
+        <li><label><input type="checkbox"><span>「分野研究の深掘り」シートを埋め進める</span></label></li>
+        <li><label><input type="checkbox"><span>気になる学校のパンフレットを取り寄せる</span></label></li>
+        <li><label><input type="checkbox"><span>志望している分野で、受験に必要になりそうな科目を調べ始める</span></label></li>
+      </ul>
+      <div class="reflect-box">
+        <h3>夏休み明けに振り返りたいこと</h3>
+        <p>行った学校の記録を見返して、「もう一度行きたい学校」「候補から外れた学校」を整理してみましょう。ここでの気づきが、志望校を絞る材料になります。</p>
+      </div>
+    </section>
+
+    <section class="season" id="winter" hidden>
+      <h2>冬休みにやること</h2>
+      <p class="body">2年生も後半戦。3年生に向けて、志望校の候補を少しずつ絞り込んでいく時期です。</p>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>秋までに行った活動（オープンキャンパス・分野研究）を振り返る</span></label></li>
+        <li><label><input type="checkbox"><span>志望校の候補を、いくつかに絞り込んでみる</span></label></li>
+        <li><label><input type="checkbox"><span>「志望校を考える」ページで、受験科目・アドミッションポリシーを確認する</span></label></li>
+        <li><label><input type="checkbox"><span>3年生への準備リストを一度確認しておく</span></label></li>
+      </ul>
+      <div class="reflect-box">
+        <h3>冬休み明けに振り返りたいこと</h3>
+        <p>年度末の面談に向けて、今の志望校候補とその理由を、自分の言葉で説明できるようにしておきましょう。</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap header-row" style="border:none; padding:0;">
+    <p>○○高等学校 進路指導部</p>
+    <a class="next" href="shibou-kou.html">次へ → 志望校を考える</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.checklist li').forEach(li => {
+    const input = li.querySelector('input');
+    input.addEventListener('change', () => {
+      li.classList.toggle('checked', input.checked);
+    });
+  });
+
+  const tabSummer = document.getElementById('tab-summer');
+  const tabWinter = document.getElementById('tab-winter');
+  const secSummer = document.getElementById('summer');
+  const secWinter = document.getElementById('winter');
+
+  tabSummer.addEventListener('click', () => {
+    tabSummer.classList.add('active'); tabSummer.setAttribute('aria-selected','true');
+    tabWinter.classList.remove('active'); tabWinter.setAttribute('aria-selected','false');
+    secSummer.hidden = false; secWinter.hidden = true;
+  });
+  tabWinter.addEventListener('click', () => {
+    tabWinter.classList.add('active'); tabWinter.setAttribute('aria-selected','true');
+    tabSummer.classList.remove('active'); tabSummer.setAttribute('aria-selected','false');
+    secWinter.hidden = false; secSummer.hidden = true;
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高校生活の過ごし方｜1年生 進路ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE6D3;
+    --paper-card:#F7F0DC;
+    --ink:#2B3A42;
+    --ink-soft:#5B6B70;
+    --route:#3D6B57;
+    --route-soft:#6E9484;
+    --compass:#B8863B;
+    --line: rgba(43,58,66,0.16);
+    --max: 860px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(184,134,59,0.10), transparent 45%),
+      radial-gradient(ellipse at 85% 10%, rgba(61,107,87,0.08), transparent 50%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 26px;}
+  a{color:inherit;}
+
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .back{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--compass); letter-spacing:.08em;}
+
+  main{padding:56px 0 90px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--compass); text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--compass);}
+  h1{
+    font-family:'Fraunces',serif; font-weight:600; font-size:clamp(28px,5vw,42px);
+    line-height:1.32; margin:0 0 20px; max-width:16ch;
+  }
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:56ch; margin:0 0 8px;}
+
+  section.block{padding:48px 0; border-bottom:1px solid var(--line);}
+  section.block:last-of-type{border-bottom:none;}
+  .block-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--route);
+    letter-spacing:.08em; margin-bottom:10px;
+  }
+  h2{font-family:'Fraunces',serif; font-weight:600; font-size:23px; margin:0 0 14px;}
+  .block p.body{font-size:14.5px; color:var(--ink-soft); margin:0 0 12px; max-width:58ch;}
+
+  .cert-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:14px; margin-top:18px;}
+  .cert-card{
+    background:var(--paper-card); border:1px solid var(--line); border-radius:8px; padding:16px 18px;
+  }
+  .cert-card h3{font-family:'Fraunces',serif; font-size:15.5px; font-weight:600; margin:0 0 6px;}
+  .cert-card p{font-size:13px; color:var(--ink-soft); margin:0;}
+
+  .checklist{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .checklist li{
+    background:var(--paper-card); border:1px solid var(--line); border-radius:8px;
+    padding:14px 16px; transition:border-color .15s ease;
+  }
+  .checklist li:hover{border-color:var(--route-soft);}
+  .checklist li.checked{border-color:var(--route); background:linear-gradient(135deg, var(--paper-card), #fbf6e6);}
+  .checklist label{display:flex; gap:12px; align-items:flex-start; cursor:pointer;}
+  .checklist input{margin-top:3px; accent-color:var(--route); width:16px; height:16px; flex-shrink:0;}
+  .checklist span{font-size:14.5px;}
+
+  .news-box{
+    background:linear-gradient(135deg, var(--paper-card), #fbf6e6);
+    border:1.5px solid var(--route); border-radius:10px; padding:22px 24px; margin-top:18px;
+  }
+  .news-box h3{font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:0 0 8px;}
+  .news-box p{font-size:14px; color:var(--ink-soft); margin:0 0 14px;}
+  .news-box a.go{
+    font-weight:600; font-size:14px; color:var(--route); text-decoration:none;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+  footer .next{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="back" href="index.html">← 1年生トップへ</a>
+    <span class="brand-sub">ROUTE 01 — 高校生活の過ごし方</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">はじめに知っておきたいこと</p>
+    <h1>今日からの積み重ねが、<br>あとで効いてくる。</h1>
+    <p class="lede">進路はまだ先の話に思えるかもしれませんが、評定・部活動・資格は、1年生の今この瞬間から積み上がっていきます。まずは、その理由を知っておきましょう。</p>
+
+    <section class="block" id="hyotei">
+      <p class="block-eyebrow">01 — 評定平均について</p>
+      <h2>日々の授業が、成績になっていく</h2>
+      <p class="body">学校推薦型選抜などの入試では、評定平均が出願の条件になることがあります。評定は定期テストの点数だけでなく、授業態度や提出物の状況も含めて日々積み上がっていくものです。</p>
+      <p class="body">「3年生になってから頑張ればいい」と思いがちですが、評定は1年生からの積み重ねです。今のうちから、提出物を期限内に出す、授業に集中するといった当たり前のことを大切にしておきましょう。</p>
+    </section>
+
+    <section class="block" id="katsudou">
+      <p class="block-eyebrow">02 — 部活動・課外活動</p>
+      <h2>続けてきたことは、あなたの言葉になる</h2>
+      <p class="body">部活動やボランティアなどの課外活動を続けることには、それ自体の意味に加えて、後から「頑張ったこと」として面接や小論文で語れる材料になるという意味もあります。</p>
+      <p class="body">大会の成績や表彰、参加したボランティア活動などは、忘れないうちに記録しておくのがおすすめです。日付・内容・そこで感じたことを簡単にメモしておくだけでも、3年生になったときに役立ちます。</p>
+    </section>
+
+    <section class="block" id="shikaku">
+      <p class="block-eyebrow">03 — 資格・検定</p>
+      <h2>取っておくと役立つもの</h2>
+      <p class="body">興味のある分野に関連する資格・検定があれば、1年生のうちから挑戦してみるのもおすすめです。</p>
+      <div class="cert-grid">
+        <div class="cert-card"><h3>英検</h3><p>多くの入試で評価対象になりやすい、代表的な資格です。</p></div>
+        <div class="cert-card"><h3>漢字検定</h3><p>国語力の土台づくりとして取り組みやすい資格です。</p></div>
+        <div class="cert-card"><h3>情報処理技能検定</h3><p>ITやパソコンのスキルを客観的に示せます。</p></div>
+        <div class="cert-card"><h3>分野に関連する検定</h3><p>栄養・簿記・ニュース検定など、気になる分野に関連するものも調べてみましょう。</p></div>
+      </div>
+    </section>
+
+    <section class="block" id="todo">
+      <p class="block-eyebrow">04 — 今のうちにやっておきたいこと</p>
+      <h2>チェックリスト</h2>
+      <p class="body">クリックしてチェックしながら、今の自分の生活を振り返ってみましょう。</p>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>授業の提出物を、期限内にきちんと出している</span></label></li>
+        <li><label><input type="checkbox"><span>定期テストの復習を、ためこまずにやっている</span></label></li>
+        <li><label><input type="checkbox"><span>部活動や委員会活動に、積極的に取り組んでいる</span></label></li>
+        <li><label><input type="checkbox"><span>図書室で気になる本を読んでみたことがある</span></label></li>
+        <li><label><input type="checkbox"><span>週に一度は、ニュースをチェックする習慣がある</span></label></li>
+      </ul>
+
+      <div class="news-box">
+        <h3>ニュースに触れる習慣、今のうちから</h3>
+        <p>3年生になると、志望理由書や面接で時事問題への理解が求められる場面が増えます。1年生のうちから少しずつニュースに触れておくと、後がぐっと楽になります。</p>
+        <a class="go" href="https://knsite.github.io/articles/" target="_blank" rel="noopener">学習・時事ニュース記事を見てみる →</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap header-row" style="border:none; padding:0;">
+    <p>○○高等学校 進路指導部</p>
+    <a class="next" href="jibun-rikai.html">次へ → 自己理解ワーク</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.checklist li').forEach(li => {
+    const input = li.querySelector('input');
+    input.addEventListener('change', () => {
+      li.classList.toggle('checked', input.checked);
+    });
+  });
+</script>
+
+</body>
+</html>

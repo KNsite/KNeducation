@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>次の一歩へ｜1年生 進路ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE6D3;
+    --paper-card:#F7F0DC;
+    --ink:#2B3A42;
+    --ink-soft:#5B6B70;
+    --route:#3D6B57;
+    --route-soft:#6E9484;
+    --compass:#B8863B;
+    --line: rgba(43,58,66,0.16);
+    --max: 780px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(184,134,59,0.12), transparent 45%),
+      radial-gradient(ellipse at 80% 30%, rgba(61,107,87,0.10), transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 26px;}
+  a{color:inherit;}
+
+  header{padding:22px 0 18px; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .back{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; border-bottom:1px dashed var(--ink-soft); padding-bottom:1px;
+  }
+  .brand-sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--compass); letter-spacing:.08em;}
+
+  main{padding:60px 0 90px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--compass); text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--compass);}
+  h1{
+    font-family:'Fraunces',serif; font-weight:600; font-size:clamp(28px,5vw,42px);
+    line-height:1.35; margin:0 0 20px; max-width:16ch;
+  }
+  h1 em{font-style:italic; color:var(--route); font-weight:500;}
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:56ch; margin:0 0 50px;}
+
+  .step{margin-bottom:44px;}
+  .step-num{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--route);
+    letter-spacing:.08em; margin-bottom:10px; display:block;
+  }
+  h2{font-family:'Fraunces',serif; font-weight:600; font-size:22px; margin:0 0 12px;}
+  .step p.body{font-size:14.5px; color:var(--ink-soft); margin:0 0 16px; max-width:58ch;}
+  .step a.link-out{
+    font-size:14px; font-weight:600; color:var(--route); text-decoration:none;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+
+  .divider{
+    height:1px; background:var(--line); margin:56px 0;
+  }
+
+  .bridge{
+    background:linear-gradient(135deg, var(--paper-card), #fbf6e6);
+    border:1.5px solid var(--route); border-radius:12px;
+    padding:32px 30px; text-align:left;
+  }
+  .bridge .eyebrow{margin-bottom:14px;}
+  .bridge h2{font-size:24px;}
+  .bridge p{font-size:14.5px; color:var(--ink-soft); margin:0 0 22px; max-width:52ch;}
+  .cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--route); color:var(--paper-card); text-decoration:none;
+    padding:14px 24px; border-radius:6px; font-weight:600; font-size:15px;
+    box-shadow:0 6px 18px rgba(61,107,87,0.25);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .cta:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(61,107,87,0.32);}
+
+  footer{
+    border-top:1px solid var(--line); padding:34px 0 44px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; font-size:13px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="back" href="index.html">← 1年生トップへ</a>
+    <span class="brand-sub">ROUTE 06 — 次の一歩へ</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">1年生のルートも、あとひとつ</p>
+    <h1>ここからは、<br><em>次の学年へ。</em></h1>
+    <p class="lede">文理選択という一つの決断ができました。ここでもう一度、自分を見つめ直しつつ、少しだけ先の話にも目を向けてみましょう。</p>
+
+    <div class="step">
+      <span class="step-num">STEP A — 自己理解をさらに深める</span>
+      <h2>もう一度、自分に問いかけてみる</h2>
+      <p class="body">文理選択という決断を経たあなたは、1年生の春に診断を受けたときとは、少し見え方が変わっているかもしれません。もう一度診断を受けてみて、結果が変わったか、変わらなかったかを確かめてみましょう。</p>
+      <a class="link-out" href="jibun-rikai.html">もう一度、自己理解ワークをやってみる →</a>
+    </div>
+
+    <div class="step">
+      <span class="step-num">STEP B — 校種を考えはじめる</span>
+      <h2>「どこで学ぶか」も、少しずつ視野に入れる</h2>
+      <p class="body">気になる分野が見えてきたら、次に出てくるのが「大学・短大・専門学校・就職」のどれで学ぶか、という問いです。1年生の今は覚えておく程度で大丈夫。それぞれ学べる期間や学び方の特徴が違う、ということだけ頭に入れておきましょう。詳しくは2年生の「進路タイプ整理」で扱います。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="bridge">
+      <p class="eyebrow">2年生へ</p>
+      <h2>選んだ道を、進んでいく学年へ</h2>
+      <p>2年生からは、気になる分野を2〜3個に絞って具体的に調べたり、オープンキャンパスに行ったりと、より実践的な1年間になります。準備ができたら、2年生サイトをのぞいてみましょう。</p>
+      <a class="cta" href="../site2/index.html">2年生サイトへ進む →</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap header-row" style="border:none; padding:0;">
+    <p>○○高等学校 進路指導部</p>
+  </div>
+</footer>
+
+</body>
+</html>
